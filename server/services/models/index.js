@@ -8,10 +8,17 @@ if (!global.hasOwnProperty('db')) {
   //figure out database color--
   if (process.env.DATABASE_URL) {
     // the application is executed on Heroku ... use the postgres database
-    sequelize = new Sequelize(process.env.DATABASE_URL, {
-      dialect:  'postgres',
+    var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
+
+    var sequelize = new Sequelize(match[5], match[1], match[2], {
+      dialect: 'postgres',
       protocol: 'postgres',
-      logging:  true //false
+      port: match[4],
+      host: match[3],
+      logging: false,
+      dialectOptions: {
+        ssl: true
+      }
     });
   } else {
     // the application is executed on the local machine ... use mysql
