@@ -37,3 +37,7 @@
 .map, #map {
   position: relative;
 }
+
+a:hover {
+  background-color: papayawhip;
+}

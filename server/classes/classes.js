@@ -23,7 +23,7 @@ module.exports = {
     obj.contact = body.restaurant.phone;
     obj.latitude = body.restaurant.coordinate.lat;
     obj.longitude = body.restaurant.coordinate.lng;
-    
+
     if (typeof body.username === "string" && body.username.length > 0) {
       obj.username = body.username;
     } else {
@@ -41,7 +41,7 @@ module.exports = {
     return obj;
   },
 
-  Join : function(body) {
+  Join: function(body) {
     this.firstName = body.firstName;
     this.lastName = body.lastName;
     this.description = body.description;
@@ -52,5 +52,5 @@ module.exports = {
     this.lastName = body.lastName;
     this.facebookId = body.facebookId;
   }
-  
+
 };
