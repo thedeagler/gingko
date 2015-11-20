@@ -1,10 +1,29 @@
 var Sequelize = require("sequelize");
 
 //Unsure if we need password, come back to this
-var db = new Sequelize("tablesurfer", "admin", "admin", {
-  dialect: "postgres", // or 'sqlite', mysql', 'mariadb'
-  port: 5432 //(for postgres)
-});
+var db;
+// Set db depending on deployment or local testing
+if (process.env.DATABASE_URL) {
+  // the application is executed on Heroku ... use the postgres database
+  var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
+
+  db = new Sequelize(match[5], match[1], match[2], {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    port: match[4],
+    host: match[3],
+    logging: false,
+    dialectOptions: {
+      ssl: true
+    }
+  });
+} else {
+  // the application is executed on the local machine ... use mysql
+  db = new Sequelize("tablesurfer", "admin", "admin", {
+    dialect: "postgres", // or 'sqlite', mysql', 'mariadb'
+    port: 5432 //(for postgres)
+  });
+}
 
 var Users = db.define("Users", {
   //here we will have to figure out the data from facebook on authentication
