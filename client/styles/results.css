@@ -1,0 +1,23 @@
+.gridListdemoBasicUsage md-grid-list {
+  margin: 8px;
+}
+.gridListdemoBasicUsage md-grid-tile {
+  transition: all 400ms ease-out 50ms;
+}
+
+.gridListdemoBasicUsage figure img {
+  height: 100%;
+  width: 100%;
+}
+.gridListdemoBasicUsage md-grid-list md-grid-tile-header h3 {
+  font-size: 32px;
+  position: relative;
+  color: red;
+  z-index: 1;
+}
+.gridListdemoBasicUsage md-grid-tile-footer {
+  font-size: 10px;
+  background-color: #ddd;
+  color: black;
+  z-index: 1;
+}

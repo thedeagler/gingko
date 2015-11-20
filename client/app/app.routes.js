@@ -33,6 +33,11 @@
         url: '/meals/:id',
         templateUrl: 'app/meal/meal.html',
         controller: 'MealCtrl'
+      })
+      .state('searchResults', {
+        url: '/results',
+        templateUrl: 'app/searchResults/searchResults.html',
+        controller: 'SearchResultsCtrl'
       });
       // TODO: remove above semicolon to add more routes
   }
