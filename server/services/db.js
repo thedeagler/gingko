@@ -28,6 +28,11 @@ if (process.env.DATABASE_URL) {
 
 var Users = db.define("Users", {
   //here we will have to figure out the data from facebook on authentication
+  surferId: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
   username: {
     type: Sequelize.STRING,
     allowNull: false
