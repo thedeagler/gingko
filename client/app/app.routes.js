@@ -37,7 +37,13 @@
       .state('results', {
         url: '/results',
         templateUrl: 'app/searchResults/searchResults.html',
-        controller: 'SearchResultsCtrl'
+        controller: 'SearchResultsCtrl',
+        controllerAs: 'results',
+        resolve: {
+          mealsData: function($http) {
+            return $http({method: 'GET', url: '/api/in/meals'});
+          }
+        }
       });
       // TODO: remove above semicolon to add more routes
   }

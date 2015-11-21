@@ -3,12 +3,19 @@
 }
 .gridListdemoBasicUsage md-grid-tile {
   transition: all 400ms ease-out 50ms;
+  transition: 0.5s ease-in-out;
+  border: 1px solid #ccc;
 }
 
 .gridListdemoBasicUsage figure img {
   height: 100%;
   width: 100%;
 }
+
+.gridListdemoBasicUsage md-grid-tile:hover {
+  transform: scale(1.02, 1.02);
+}
+
 .gridListdemoBasicUsage md-grid-list md-grid-tile-header h3 {
   font-size: 32px;
   position: relative;
@@ -16,8 +23,54 @@
   z-index: 1;
 }
 .gridListdemoBasicUsage md-grid-tile-footer {
-  font-size: 10px;
-  background-color: #ddd;
-  color: black;
+  background-color: #fff;
   z-index: 1;
+}
+.gridListdemoBasicUsage md-grid-tile-footer li{
+  list-style-type: none;
+  font-family: 'Circular', 'Helvetica Neue', 'Helvetica', 'Arial';
+}
+
+.gridListdemoBasicUsage md-grid-tile-footer li.name {
+  font-size: 16px;
+  color: #565a5c;
+}
+.gridListdemoBasicUsage md-grid-tile-footer li.reviews {
+  position: relative;
+  left: 1%;
+}
+
+.gridListdemoBasicUsage md-grid-tile-footer li.location, li.rating, li.reviews {
+  font-size: 10px;
+  margin-bottom: 2px;
+  list-style-type: none;
+  color: #82888a;
+}
+.material-icons {
+  color: black;
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 8px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  float: left;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }

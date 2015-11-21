@@ -1,25 +1,25 @@
-<div id="search-results" ng-controller='SearchResultsCtrl as results' ng-cloak>
-
+<div id="search-results" ng-cloak>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 gridListdemoBasicUsage">
 
           <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
-
-              <md-grid-tile ng-repeat="result in results.data | filter:results.searchQuery" md-colspan='2' >
+              <md-grid-tile ng-repeat="result in results.meals | filter:results.searchQuery" md-colspan='2' >
                 <a ng-href="/api/links/" ng-model="linkUrl">
                   <md-grid-tile-header>
-                    <h3>{{ result.name }}</h3>
                   </md-grid-tile-header>
                   <figure>
-                    <img ng-src="{{result.picture}}" width="100%" height="100%">
+                    <img ng-src="{{result.yelpData.image_url}}" width="100%" height="100%">
                   </figure>
                 </a>
                 <md-grid-tile-footer>
                 <ul>
-                  <li>Location: {{ result.city }}, {{result.state_code}}</li>
-                  <li>Time: {{result.time}}</li>
-                  <li>Restaurant Rating: {{result.rating}} Stars</li>
+                  <li class="name">{{ result.yelpData.name }}</li>
+                  <li class="location">{{ result.address }}</li>
+                  <li class="rating" ng-repeat="star in results.renderStars(result.yelpData.rating) track by $index">
+                    <i class="material-icons">{{star}}</i>
+                  </li>
+                  <li class="reviews">{{result.yelpData.review_count}} reviews</li>
                 </ul>
                 </md-grid-tile-footer>
               </md-grid-tile>
