@@ -5,16 +5,24 @@
   .controller('SearchResultsCtrl', SearchResultsCtrl);
 
   // if factories are needed, inject here
-  SearchResultsCtrl.$inject = ['multibarFactory','$state', "$location", "$window"];
+  SearchResultsCtrl.$inject = ['multibarFactory','$state', "$location", "$window", "$http", 'mealsData'];
 
-  function SearchResultsCtrl(multibarFactory, $state, $location, $window) {
-    this.searchQuery = multibarFactory.getQuery();
+  function SearchResultsCtrl(multibarFactory, $state, $location, $window, $http, mealsData) {
+    var self = this;
+    // self.ready = false;
+    self.meals = mealsData.data.map(function(meal) {
+      return {
+        address: meal.address,
+        date: meal.date,
+        host: meal.host,
+        time: meal.time,
+        title: meal.title,
+        yelpData: JSON.parse(meal.yelpData)
+      };
+    });
 
-    this.data = [
-      {rating: 3, time: '3:00 PM', name: 'chipotle', picture: 'http://indianapublicmedia.org/eartheats/files/2012/06/5115793807_9e843d90db_b-e1339037423853.jpg', city: 'San Fransisco', state_code: 'CA'},
-      {rating: 2, time: '7:00 PM', name: 'subway', picture: 'http://www.restaurantnews.com/wp-content/uploads/2015/08/SUBWAY-Restaurants-Recognizes-Achievements-Of-Outstanding-Franchisees.jpg', city: 'San Fransisco', state_code: 'CA'},
-      {rating: 4.5, time: '12:00 PM', name: 'dominos', picture: 'http://s3.amazonaws.com/newscloud-production/tallmadgeexpress/2014/09/5412b6bc7e85e8c3f4000da9/photos/ken8041364/original.jpg?1410512574', city: 'Menlo Park', state_code: 'CA'},
-    ];
+    console.log(self.meals[0]);
+    self.searchQuery = multibarFactory.getQuery();
 
   }
 
