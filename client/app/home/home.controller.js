@@ -11,7 +11,8 @@
     var self = this;
     self.tables = []; // Collection of meal objects
 
-    var rowHeight = ($window.height - 64) / 2;
+    var rowHeight = window.innerHeight / 2;
+    console.log(rowHeight);
     document.getElementById('hero_container').style.height = rowHeight;
     document.getElementById('cards').style.height = rowHeight;
     document.getElementById('title').style.marginTop = rowHeight / 3;
