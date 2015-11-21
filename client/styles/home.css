@@ -26,6 +26,9 @@ h3.subtitle {
   text-align: center;
   margin: 0;
 }
+.multibar-input {
+  background-color: white;
+}
 
 /*.search {
   position: absolute;
