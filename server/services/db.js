@@ -4,6 +4,7 @@ var Sequelize = require("sequelize");
 var db;
 // Set db depending on deployment or local testing
 if (process.env.DATABASE_URL) {
+  console('!!!!!!!!!!!!!');
   // the application is executed on Heroku ... use the postgres database
   var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
 
@@ -81,6 +82,9 @@ var Restaurants = db.define("Restaurants", {
   lng: {
     type: Sequelize.FLOAT,
     allowNull: false
+  },
+  yelpData: {
+    type: Sequelize.JSON
   }
 
 });

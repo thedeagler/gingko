@@ -81,6 +81,9 @@ if (!global.hasOwnProperty('db')) {
     lng: {
       type: Sequelize.FLOAT,
       allowNull: false
+    },
+    yelpData: {
+      type: Sequelize.JSON
     }
     //latitude
     //longitude
