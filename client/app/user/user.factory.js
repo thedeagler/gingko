@@ -31,8 +31,10 @@
       //dummy data:
       cb( { name: 'Kyle Cho',
                   job: "Software Engineer",
-                  hostrating: "4.5",
-                  userrating: "5",
+                  hostrating: 4.5,
+                  numhostratings: 57,
+                  guestrating: 5,
+                  numguestratings: 23,
                   hobbies: "Giving pro tips.",
                   favorite_eatery: 'Sarku @ The Westfield',
                   aspirations: "President of 'murica"

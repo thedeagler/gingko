@@ -8,7 +8,10 @@
       <div class="user-details" ng-model="user.user" layout="column">
         <li class="username">{{user.user.name}}</li>
         <div class="stars">
-            <img class="star" ng-repeat="i in user.user.userrating track by $index" ng-src="{{i}}">
+            <img class="star" ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}">
+            <!-- <img class="star" ng-if=ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}"> -->
+             <span>({{user.user.numhostratings}})</span>
+            <span class="toggle-rating">host</span><span> | </span><span class="toggle-rating">guest</span></span>
         </div>
       <ul>
         <li class="line-items"><strong>Job: </strong>"{{user.user.job}}"</li>
