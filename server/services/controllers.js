@@ -79,15 +79,16 @@ module.exports = {
     post: function (data) {
       return database.Users.findOrCreate({where: {username: data.username}})
         .then(function (user) {
-          return database.Restaurants.findOrCreate({where: {name: data.restaurant}, defaults:  {name: data.restaurant, address: data.address, contact: data.contact, lat: data.latitude, lng: data.longitude}})
+          return database.Restaurants.findOrCreate({where: {name: data.restaurant}, defaults:  {name: data.restaurant, address: data.address, contact: data.contact, lat: data.latitude, lng: data.longitude, yelpData: data.yelpData}})
             .then(function (restaurant) {
               return database.Meals.create({
                 title: data.title,
                 date: data.date,
                 time: data.time,
                 description: data.description,
+                yelpData: data.yelpData,
                 UserId: user[0].dataValues.id,
-                RestaurantId: restaurant[0].dataValues.id
+                RestaurantId: restaurant[0].dataValues.id,
               }).then(function (message) {
                 return message;
               });

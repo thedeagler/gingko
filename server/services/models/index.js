@@ -54,6 +54,9 @@ if (!global.hasOwnProperty('db')) {
     description: {
       type: Sequelize.STRING,
       allowNull: false
+    },
+    yelpData: {
+      type: Sequelize.JSON
     }
   });
   //create Users Users foreign key for meal
@@ -83,7 +86,8 @@ if (!global.hasOwnProperty('db')) {
       allowNull: false
     },
     yelpData: {
-      type: Sequelize.JSON
+      type: Sequelize.JSON,
+      allowNull: false
     }
     //latitude
     //longitude

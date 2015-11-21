@@ -55,6 +55,9 @@ var Meals = db.define("Meals", {
   description: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  yelpData: {
+    type: Sequelize.JSON
   }
 });
 //create Users Users foreign key for meal
@@ -84,7 +87,8 @@ var Restaurants = db.define("Restaurants", {
     allowNull: false
   },
   yelpData: {
-    type: Sequelize.JSON
+    type: Sequelize.JSON,
+    allowNull: false
   }
 
 });
