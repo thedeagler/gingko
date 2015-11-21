@@ -34,7 +34,7 @@
         templateUrl: 'app/meal/meal.html',
         controller: 'MealCtrl'
       })
-      .state('searchResults', {
+      .state('results', {
         url: '/results',
         templateUrl: 'app/searchResults/searchResults.html',
         controller: 'SearchResultsCtrl'
