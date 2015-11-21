@@ -1,19 +1,23 @@
+<link rel="stylesheet" href="../../styles/user.css">
 <div id="user" ng-controller='UserCtrl as user' layout="column">
 <!-- in order to use the self properties, you must specify controller as a variable   -->
-  <span>
-    <h3>Your Account Details</h3>
-  </span>
-  <md-card layout="row">
-    <img class="headshot" src="https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg" alt="" layout="column">
-    <div class="user-details" layout="column">
+  <div class='main-container'>
+    <md-card>
+      <img ng-src="https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg" class="md-card-image">
+      <md-contents>
+      <div class="user-details" ng-model="user.user" layout="column">
+        <li class="username">{{user.user.name}}</li>
+        <div class="stars">
+            <img class="star" ng-repeat="i in user.user.userrating track by $index" ng-src="{{i}}">
+        </div>
       <ul>
-        <li class="line-items"><strong>Name: </strong>Kyle Cho</li>
-        <li class="line-items"><strong>Job: </strong>Software Engineer</li>
-        <li class="line-items"><strong>Hobbies: </strong>Giving pro tips.</li>
-        <li class="line-items"><strong>Favorite Eatery: </strong>Sarku @ The Westfield</li>
-        <li class="line-items"><strong>Aspirations: </strong>President of 'murica</li>
+        <li class="line-items"><strong>Job: </strong>"{{user.user.job}}"</li>
+        <li class="line-items"><strong>Hobbies: </strong>{{user.user.hobbies}}</li>
+        <li class="line-items"><strong>Favorite Eatery: </strong>{{user.user.favorite_eatery}}</li>
+        <li class="line-items"><strong>Aspirations: </strong>{{user.user.aspirations}}</li>
       </ul>
     </div>
+  </md-contents>
   </md-card>
-
+</div>
 </div>
