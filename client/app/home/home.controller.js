@@ -11,6 +11,15 @@
     var self = this;
     self.tables = []; // Collection of meal objects
 
+    var rowHeight = ($window.height - 64) / 2;
+    document.getElementById('hero_container').style.height = rowHeight;
+    document.getElementById('cards').style.height = rowHeight;
+    document.getElementById('title').style.marginTop = rowHeight / 3;
+
+
+
+
+
     self.go = function(e, v) {
       // console.log(e, v);
     };

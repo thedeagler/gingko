@@ -1,7 +1,7 @@
-<div id="home_container" layout="column">
-  <section class="hero" layout="column">
-    <h1 class="title">Table Surfer</h1>
-    <h3 class="subtitle">Eat some stuff</h3>
+<div id="home_container" layout="column" ng-cloak>
+  <section id="hero_container" layout="column">
+    <h1 id="title" style="padding-top: calc">Table Surfer</h1>
+    <h3 id="subtitle">Eat some stuff</h3>
   </section>
 
   <md-toolbar layout="row" layout-align="space-between center" class="search">
@@ -12,23 +12,29 @@
         <md-button aria-label="First Button"> Button1 </md-button>
         <md-button aria-label="Second Button"> Button2 </md-button>
     </span>
-</md-toolbar>
+  </md-toolbar>
 
-  <div id="home" ng-controller='HomeCtrl as home' ng-cloak>
-  <!-- in order to use the self properties, you must specify controller as a variable   -->
-    <section class="suggestions">
-      <div class="card_container" layout-wrap layout-sm="column" layout-gt-sm="row">
-        <a ng-click="home.go(); home.viewTable()" ng-repeat="table in home.tables" flex="25">
-          <md-card class="colour">
-            <md-card-content>
-              <h2 class="md-title">{{table.title}}</h2>
-              <p>{{table.description}}</p>
-              <p>{{table.date}}</p>
-              <p>{{table.time}}</p>
-            </md-card-content>
-          </md-card>
-        </a>
-      </div>
-    </section>
+  <div id="cards" ng-controller='HomeCtrl as home' ng-cloak>
+    <md-grid-list
+    md-cols-gt-sm="3" md-cols="1"
+    md-row-height-gt-md="5:4" md-row-height="4:5"
+    md-gutter="12px" md-gutter-gt-sm="8px" flex="100"
+    layout-align="space-between center">
+      <md-grid-tile class="green">
+        <md-grid-tile-footer>
+          <h3>#1: (1r x 1c)</h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+      <md-grid-tile class="green">
+        <md-grid-tile-footer>
+          <h3>#2: (1r x 1c)</h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+      <md-grid-tile class="green">
+        <md-grid-tile-footer>
+          <h3>#3: (1r x 1c)</h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
   </div>
 </div>
