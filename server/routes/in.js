@@ -30,6 +30,7 @@ module.exports = function(dbController, passport, isLoggedIn) {
     console.log('Serverside, retrieve this meal: ', req.params);
     dbController.meals.getOne(meal_id)
     .then(function(data) {
+      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', data.meal.dataValues.yelpData);
       res.status(200).send(data);
     })
     .catch(function(err) {

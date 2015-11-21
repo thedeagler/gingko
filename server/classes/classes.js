@@ -23,6 +23,7 @@ module.exports = {
     obj.contact = body.restaurant.phone;
     obj.latitude = body.restaurant.coordinate.lat;
     obj.longitude = body.restaurant.coordinate.lng;
+    obj.yelpData = JSON.stringify(body.restaurant.yelpData);
 
     if (typeof body.username === "string" && body.username.length > 0) {
       obj.username = body.username;

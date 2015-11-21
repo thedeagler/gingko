@@ -63,10 +63,12 @@
                 'coordinate': {
                   lat: item.location.coordinate.latitude,
                   lng: item.location.coordinate.longitude
-                }
+                },
+                yelpData: item
               });
             }
           });
+
         }, function(response) {
           self.data = response.data || "Request failed";
           self.status = response.status;
@@ -75,12 +77,12 @@
         .then(function(response) {
           console.log(self.data);
           return self.data;
-        })
+        });
 
     };
 
     self.add = function () {
-      // console.log(self.meal);
+      console.log(self.meal);
       searchFactory.postMeal(self.meal)
       .then(function(response) {
         $window.location = '/#/home';
