@@ -1,0 +1,75 @@
+div#meal {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  white-space: nowrap;
+  font-family: 'Asap', sans-serif;
+}
+
+section#mealHeaderImage {
+  background: url('../app/meal/mealHeader.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 500px;
+  background-position: 0 100px;
+}
+
+div.button {
+  margin-right: -8px;
+  margin-bottom: 2%;
+}
+
+div.centerInfo {
+  margin: 0 auto;
+  border:1px solid black;
+  width: 900px;
+}
+.button.layout-align-end-end.layout-row {
+  margin-top: -57px;
+}
+
+
+
+button.md-raised.md-primary.md-button.md-ink-ripple {
+  width: 30%;
+}
+
+span.date {
+  padding: 1% 1%;
+  font-size: 1em;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+
+article.titleHeader span.dateTime {
+  margin: 0 3% 0 3%;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+article.titleHeader span.notDateTime {
+  font-size: 1.2em;
+}
+
+article.titleHeader span.city {
+  font-style: italic;
+    margin: 0 3% 0 3%;
+
+}
+
+/*
+article.titleHeader span:first-child {
+  margin-right: 1%;
+}
+
+article.titleHeader span.notDateTime {
+  margin-bottom: 0.6em;
+}
+
+
+
+span.location {
+}
+*/

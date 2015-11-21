@@ -1,15 +1,90 @@
-<div id="meal" ng-controller="MealCtrl as meal">
-  <h3> Meal Title:  {{meal.data.meal.title}}</h3>
-
-  <!-- <h5> You are currently visiting meal: {{ meal.id }} </h5> -->
-
-  <div style="text-align:left">
-    <div><strong>Host Name: </strong>{{meal.data.meal.User.username}}</div><br>
-    <div><strong>Location: </strong>{{meal.data.meal.Restaurant.address}}</div><br>
-    <div><strong>Event Time: </strong>{{meal.data.meal.time}} </div><br>
-    <div><strong>Attendees: </strong>{{meal.data.attendees}} </div><br>
-    <div><strong>Description: </strong>{{meal.data.meal.description}}</div><br>
+<link rel="stylesheet" href="../../styles/meal.css">
+<link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+<div id="meal" ng-controller="MealCtrl as meal" layout="column" ng-cloak layout-wrap>
+  <section id="mealHeaderImage" style="background:url('https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg') repeat-y center center fixed;   background-size: cover;   background-position: 0 100px;">
+    <!-- background: url('../app/meal/mealHeader.jp g') repeat-y center center fixed; -->
+  </section>
+  <div class="centerInfo">
+    <div class="button" layout="row" layout-align="end end">
+      <md-button class="md-raised md-primary">Yes, I want to attend!</md-button>
+    </div>
+    <md-content flex layout-padding>
+    <!-- <h3> Meal Title:  {{meal.data.meal.title}}</h3> -->
+    
+    <!-- Title header -->
+    <article class="titleHeader" layout="row" layout-align="start center">
+      <!-- date -->
+      <span layout="column" class="date">
+        <div>Tues</div>
+        <div>Nov 28</div>
+      </span>
+      <!-- event information -->
+      <span layout="column" >
+        <span layout="row">
+          <span class="dateTime">Dinner   |</span>
+          <!-- <span class="notDateTime">at</span> -->
+          <span class="dateTime">5:00 PM   |</span>
+          <!-- <span class="notDateTime">at</span> -->
+          <span class="dateTime">Pho Tan</span>
+        </span>
+        <span class="city" layout="row" layout-align="start center">
+          <span>Vietnamese</span>
+          <span class="rating" layout="row" layout-align="start center">
+            <img src="http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c7fb9aff59f9/ico/stars/v1/stars_2_half.png" alt="">
+          </span>
+        </span>
+        
+      </span>
+    </article>
+    <!-- Host information and restaurant information -->
+    <article class="hostFood" layout="row" layout-align="start start">
+      <!-- User photo -->
+      <div class="notMap" flex="55" layout="column" layout-align="start start" layout-wrap>
+        <div class="host-photo"  layout="row" layout-align="start start">
+          <!-- user photo -->
+          <img src="https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg" width="190">
+          <table class="user-info">
+            <tr>
+              <td>Name</td>
+              <td>Kyle Cho</td>
+            </tr>
+            <tr>
+              <td>Job</td>
+              <td>Software Engineer</td>
+            </tr>
+            <tr>
+              <td>Likes</td>
+              <td>Beach House</td>
+            </tr>
+            <tr>
+              <td>Past Events Hosted</td>
+              <td>Alumni Night, Birthday Bash</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="host-desc">
+        <h2>Message from Kyle:</h2>
+          <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, quisquam! Autem facere similique culpa totam? Itaque dolores, cumque architecto, nulla perspiciatis fugiat doloremque quam deleniti consectetur, similique ea voluptates facilis.</div>
+        </div>
+        <!-- host information -->
+      </div>
+      <!-- Map information -->
+      <div flex="45">
+        <div id='map' style="height:350px"></div>
+      </div>
+    </article>
+    
   </div>
-  <div id='map' style="height:350px"></div>
-
+  </md-content>
 </div>
+<!-- <h5> You are currently visiting meal: {{ meal.id }} </h5> -->
+<!--  <div style="text-align:left">
+  <div><strong>Host Name: </strong>{{meal.data.meal.User.username}}</div><br>
+  <div><strong>Location: </strong>{{meal.data.meal.Restaurant.address}}</div><br>
+  <div><strong>Event Time: </strong>{{meal.data.meal.time}} </div><br>
+  <div><strong>Attendees: </strong>{{meal.data.attendees}} </div><br>
+  <div><strong>Description: </strong>{{meal.data.meal.description}}</div><br>
+</div>
+<div id='map' style="height:350px"></div> -->
+<!-- </div> -->
