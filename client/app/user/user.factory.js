@@ -44,19 +44,17 @@
       });
     }
 
+    // get Facebook data from api/in/user:id, based on the window url
     function getFacebookInfo(cb) {
-      // TODO: Get access to User databse using the Facebook ID
       var facebookId = window.location.search.slice(1);
-      cb({
-        facebookId: facebookId
-      });
-      //  Received data:         {
-      //   "id": 1,
-      //   "username": "Michelle Lee",
-      //   "facebookId": "10153694652967731",
-      //   "createdAt": "2015-11-21T19:20:45.136Z",
-      //   "updatedAt": "2015-11-21T19:20:45.136Z"
-      // }
+      return $http({
+          url: '/api/in/user/:' + facebookId,
+          method: 'GET'
+        })
+        .then(function(response) {
+          console.log('Get users data is here, resp.data: ', response.data);
+          cb(response.data);
+        });
     }
   }
 })();

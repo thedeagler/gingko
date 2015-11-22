@@ -12,6 +12,17 @@ module.exports = {
       });
     },
 
+    getOne: function(facebookId) {
+      return database.Users.find({
+          where: {
+            facebookId: facebookId
+          }
+        })
+        .then(function(user) {
+          return user;
+        });
+    },
+
     post: function (data) {
       return database.Users.create({
         username: data.displayName,

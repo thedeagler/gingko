@@ -42,6 +42,6 @@
 // Other:
 // - Host name
 // - Event time
-// - Attendees
+// - Attendees?
 // - Event description
 
