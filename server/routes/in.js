@@ -7,7 +7,7 @@ module.exports = function(dbController, passport, isLoggedIn) {
 
   var router = express.Router();
 
-//------------------------------------------------------//
+  //------------------------------------------------------//
   //posting to the query file which will post to the meals database details of a new event
   router.post('/meals', function(req, res) {
     //make an object of all the values that we need
@@ -19,9 +19,9 @@ module.exports = function(dbController, passport, isLoggedIn) {
     }
     //else go onto the queries
     dbController.meals.post(meal)
-    .then(function(data){
-      res.status(200).send(data);
-    });
+      .then(function(data) {
+        res.status(200).send(data);
+      });
 
   });
 
@@ -36,17 +36,17 @@ module.exports = function(dbController, passport, isLoggedIn) {
     });
   });
 
-//------------------------------------------------------//
+  //------------------------------------------------------//
   router.get('/meals', function(req, res) {
     //request on loading the main page to see the upcoming meals
     dbController.meals.get()
-    .then(function(data) {
-      res.status(200).send(data);
-    })
-    .catch(function(err) {
-      console.log('err posting meal data', err);
-      res.status(500).send(err);
-    });
+      .then(function(data) {
+        res.status(200).send(data);
+      })
+      .catch(function(err) {
+        console.log('err posting meal data', err);
+        res.status(500).send(err);
+      });
 
   });
 
@@ -55,21 +55,31 @@ module.exports = function(dbController, passport, isLoggedIn) {
     var join = new classes.Join(req.body);
 
     dbController.user.joinMeal(join)
-    .then(function(data) {
-      res.status(200).send(data);
-    })
-    .catch(function(err) {
-      console.log('err posting meal data:', err);
-      res.status(500).send(err);
-    });
+      .then(function(data) {
+        res.status(200).send(data);
+      })
+      .catch(function(err) {
+        console.log('err posting meal data:', err);
+        res.status(500).send(err);
+      });
 
   });
 
-//------------------------------------------------------//
+  //------------------------------------------------------//
   //testing purposes only?? Do not thing that this is relevant to our app currenly
-  router.get('/user', isLoggedIn, function(req, res) {
+  // isLoggedIn middleware was taken out, but eventually put it back in after Tokens are solved
+  router.get('/users', function(req, res) {
+
+  });
+
+  // params usage
+  router.get('/user/:id', function(req, res) {
+    var user = classes.AddUser(req.body);
+    var userFacebookId = req.params.id.slice(1);
+    console.log('req.params =', req.params.id.slice(1));
+
     //get the user details from the database
-    dbController.user.get()
+    dbController.user.getOne(userFacebookId)
     .then(function(data) {
       res.status(200).send(data);
     })
@@ -77,28 +87,21 @@ module.exports = function(dbController, passport, isLoggedIn) {
       console.log('err getting user data:', err);
       res.status(500).send(err);
     });
-
   });
 
-  // params usage
-  router.get('/user/:id', function(req, res) {
-
-  });
-
-
-//------------------------------------------------------//
+  //------------------------------------------------------//
   router.post('/user', function(req, res) {
 
     var newUser = new classes.AddUser(req.body);
 
     dbController.user.post(newUser)
-    .then(function(data) {
-      res.status(200).send(data);
-    })
-    .catch(function(err) {
-      console.log('err posting user data:', err);
-      res.status(500).send(err);
-    });
+      .then(function(data) {
+        res.status(200).send(data);
+      })
+      .catch(function(err) {
+        console.log('err posting user data:', err);
+        res.status(500).send(err);
+      });
 
   });
 

@@ -32,7 +32,15 @@
       .state('meal', {
         url: '/meals/:id',
         templateUrl: 'app/meal/meal.html',
-        controller: 'MealCtrl'
+        controller: 'MealCtrl',
+        controllerAs: 'meal',
+        resolve: {
+          mealsData: ['$http', '$stateParams', function($http, $stateParams) {
+            console.log('$stateParams =', $stateParams);
+            // console.log(window.location.href.slice.)
+            return $http({method: 'GET', url: '/api/in/meals/' + $stateParams.id});
+          }]
+        }
       })
       .state('results', {
         url: '/results',

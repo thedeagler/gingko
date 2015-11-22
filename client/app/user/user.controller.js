@@ -35,16 +35,11 @@
       self.user = user;
     });
 
+    // Getting data from Facebook - userFactory method called
     userFactory.getFacebookInfo(function(fbInfo) {
-      //  Received data: {
-      //   "id": 1,
-      //   "username": "Michelle Lee",
-      //   "facebookId": "10153694652967731",
-      //   "createdAt": "2015-11-21T19:20:45.136Z",
-      //   "updatedAt": "2015-11-21T19:20:45.136Z"
-      // }
       self.user.facebookId = fbInfo.facebookId;
       self.user.name = fbInfo.username;
+      self.user.userId = fbInfo.id;
       self.user.facebookImg = 'http://graph.facebook.com/v2.5/' + fbInfo.facebookId + '/picture?type=large';
     });
 
