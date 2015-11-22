@@ -79,7 +79,6 @@ module.exports = {
         .then(function (meal) {
           return meal.getUsers().then(function (result) {
             var mealObj = {meal: meal, Attendees: result};
-            console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
             return mealObj;
           });
 

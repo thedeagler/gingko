@@ -43,10 +43,6 @@
     };
 
     self.searchQuery = multibarFactory.getQuery();
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   }
 
 })();
