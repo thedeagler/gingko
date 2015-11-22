@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../../styles/meal.css">
 <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
-<div id="meal" ng-controller="MealCtrl as meal" layout="column" ng-cloak layout-wrap>
+<div id="meal" layout="column" ng-cloak layout-wrap>
   <section id="mealHeaderImage" style="background:url('https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg') repeat-y center center fixed;   background-size: cover;   background-position: 0 100px;">
     <!-- background: url('../app/meal/mealHeader.jp g') repeat-y center center fixed; -->
   </section>
@@ -25,15 +25,14 @@
           <!-- <span class="notDateTime">at</span> -->
           <span class="dateTime">5:00 PM   |</span>
           <!-- <span class="notDateTime">at</span> -->
-          <span class="dateTime">Pho Tan</span>
+          <span class="dateTime">{{meal.yelpData.name}}</span>
         </span>
         <span class="city" layout="row" layout-align="start center">
-          <span>Vietnamese</span>
+          <span>{{meal.yelpData.categories[0][0]}}</span>
           <span class="rating" layout="row" layout-align="start center">
-            <img src="http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c7fb9aff59f9/ico/stars/v1/stars_2_half.png" alt="">
+            <img src="{{meal.yelpData.rating_img_url}}" alt="">
           </span>
         </span>
-        
       </span>
     </article>
     <!-- Host information and restaurant information -->
@@ -64,8 +63,10 @@
         </div>
         
         <div class="host-desc">
-        <h2>Message from Kyle:</h2>
-          <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, quisquam! Autem facere similique culpa totam? Itaque dolores, cumque architecto, nulla perspiciatis fugiat doloremque quam deleniti consectetur, similique ea voluptates facilis.</div>
+          <h2>Message from Kyle:</h2>
+          <div>Testimonial: "{{meal.data.meal.description}}"
+          </div>
+          <div>Updated at: {{meal.data.meal.date}}</div>
         </div>
         <!-- host information -->
       </div>

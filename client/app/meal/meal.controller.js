@@ -1,15 +1,16 @@
 // This controller should handle the unique view of a meal page
 // Example: http://localhost.com/#/meal/4 (should show the 4th meal)
 
-(function () {
+(function() {
   'use strict';
 
   angular.module('app')
-  .controller('MealCtrl', MealCtrl);
+    .controller('MealCtrl', MealCtrl);
 
-  MealCtrl.$inject = ['$http', '$location', '$window'];
+  MealCtrl.$inject = ['$http', '$location', '$window', 'mealsData', '$stateParams'];
 
-  function MealCtrl($http, $location, $window, Map) {
+  function MealCtrl($http, $location, $window, Map, mealsData, $stateParams) {
+
     var self = this;
     self.id = $location.path();
     self.data;
@@ -23,34 +24,41 @@
       var path = '/api/in';
       console.log('Getting users from DB, path is: ', path + $location.path());
       return $http({
-        method: 'GET',
-        url: path + $location.path()
-      })
-      .then(function(response) {
-        console.log(' ******** RESPONSE RETURNED **********');
-        console.log('Get users data is here, resp.data: ', response);
-        self.data = response.data;
-        console.log(self.data);
+          method: 'GET',
+          url: path + $location.path()
+        })
+        .then(function(response) {
+          console.log(' ******** RESPONSE RETURNED **********');
+          console.log('Get users data is here, resp.data: ', response);
+          self.data = response.data;
 
-        var mapCanvas = document.getElementById('map');
-        var myLatLng = {lat: self.data.meal.Restaurant.lat, lng: self.data.meal.Restaurant.lng};
-        var mapOptions = {
-          center: new google.maps.LatLng(self.data.meal.Restaurant.lat, self.data.meal.Restaurant.lng),
-          zoom: 12,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+          self.mealsData = response.data.meal;
+          self.yelpData = JSON.parse(response.data.meal.yelpData);
+          console.log('self.mealsData.meal.yelpData =', JSON.parse(response.data.meal.yelpData));
+          console.log(self.data);
 
-        map = new google.maps.Map(mapCanvas, mapOptions);
+          var mapCanvas = document.getElementById('map');
+          var myLatLng = {
+            lat: self.data.meal.Restaurant.lat,
+            lng: self.data.meal.Restaurant.lng
+          };
+          var mapOptions = {
+            center: new google.maps.LatLng(self.data.meal.Restaurant.lat, self.data.meal.Restaurant.lng),
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          title: "hello world!"
+          map = new google.maps.Map(mapCanvas, mapOptions);
+
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            title: "hello world!"
+          });
+
+          marker.setMap(map);
+
+
         });
-
-        marker.setMap(map);
-
-
-      });
     };
 
     self.activate();
