@@ -6,6 +6,11 @@ var n = require('nonce')();
 var qs = require('querystring');
 var Promise = require('bluebird');
 
+
+
+var fs = require('fs');
+
+
 var auth = require('../services/auth.js');
 
 var request_yelp = function(set_parameters, callback) {
@@ -20,12 +25,12 @@ var request_yelp = function(set_parameters, callback) {
   };
 
   var required_parameters = {
-    oauth_consumer_key : auth.oauth.consumer_key,
-    oauth_token : auth.oauth.token,
-    oauth_nonce : n(),
-    oauth_timestamp : n().toString().substr(0,10),
-    oauth_signature_method : 'HMAC-SHA1',
-    oauth_version : '1.0'
+    oauth_consumer_key: auth.oauth.consumer_key,
+    oauth_token: auth.oauth.token,
+    oauth_nonce: n(),
+    oauth_timestamp: n().toString().substr(0, 10),
+    oauth_signature_method: 'HMAC-SHA1',
+    oauth_version: '1.0'
   };
 
   // parameters combined in order of importance
@@ -36,12 +41,14 @@ var request_yelp = function(set_parameters, callback) {
 
   /* Then we call Yelp's Oauth 1.0a server, and it returns a signature */
   /* Note: This signature is only good for 300 seconds after the oauth_timestamp */
-  var signature = oauthSignature.generate(httpMethod, url, parameters, consumerSecret, tokenSecret, { encodeSignature: false});
+  var signature = oauthSignature.generate(httpMethod, url, parameters, consumerSecret, tokenSecret, {
+    encodeSignature: false
+  });
   parameters.oauth_signature = signature;
   var paramURL = qs.stringify(parameters);
-  var apiURL = url+'?'+paramURL;
+  var apiURL = url + '?' + paramURL;
 
-  request(apiURL, function(error, response, body){
+  request(apiURL, function(error, response, body) {
     return callback(error, response, body);
   });
 
@@ -51,13 +58,17 @@ module.exports = function(db, passport, isLoggedIn) {
 
   var router = express.Router();
 
-  router.get('/login', passport.authenticate('facebook', { scope: 'email' }));
+  router.get('/login', passport.authenticate('facebook', { 
+    scope: 'email'
+  }));
 
-  router.get('/login/callback', passport.authenticate('facebook', { failureRedirect: '/' }), function (req, res) {
-    res.redirect('/?' + JSON.stringify(req.user.dataValues.username));
+  router.get('/login/callback', passport.authenticate('facebook', {
+    failureRedirect: '/'
+  }), isLoggedIn, function(req, res) {
+    res.redirect('/?' + req.user.dataValues.facebookId);
   });
 
-  router.get('/logout', function (req, res) {
+  router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
   });

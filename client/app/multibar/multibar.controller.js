@@ -10,7 +10,7 @@
   function MultibarCtrl(multibarFactory, $state, $location, $window, $mdDialog) {
     var self = this;
 
-    self.isLoggedIn = true;
+    self.isLoggedIn = false;
     self.searchQuery = '';
 
     self.routes = {
