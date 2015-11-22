@@ -1,4 +1,10 @@
+
+* {
+  /*border: 1px solid black;*/
+}
+
 div#meal {
+  word-wrap: break-word;
   padding-left: 0;
   padding-right: 0;
   margin: 0;
@@ -7,13 +13,17 @@ div#meal {
 }
 
 section#mealHeaderImage {
-  background: url('../app/meal/mealHeader.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  /*background-size: cover;*/
   height: 500px;
-  background-position: 0 100px;
+  /*  background-position: 0 100px;*/
+}
+
+article.titleHeader.layout-align-start-center.layout-row {
+  margin-bottom: 2%;
+  border-bottom: 1px solid black;
 }
 
 div.button {
@@ -23,29 +33,32 @@ div.button {
 
 div.centerInfo {
   margin: 0 auto;
-  border:1px solid black;
-  width: 900px;
+  width: 1000px;
 }
 .button.layout-align-end-end.layout-row {
   margin-top: -57px;
 }
 
-
-
 button.md-raised.md-primary.md-button.md-ink-ripple {
   width: 30%;
 }
 
-span.date {
-  padding: 1% 1%;
-  font-size: 1em;
-  font-weight: bold;
-  border: 1px solid black;
+article.titleHeader span {
+  margin-right: 5%;
 }
 
 
+article.titleHeader span.date {
+  padding: 1% 1%;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+
 article.titleHeader span.dateTime {
-  margin: 0 3% 0 3%;
+  /*margin: 0 3% 0 3%;*/
   font-weight: bold;
   font-size: 1.4em;
 }
@@ -55,8 +68,30 @@ article.titleHeader span.notDateTime {
 
 article.titleHeader span.city {
   font-style: italic;
-    margin: 0 3% 0 3%;
+  /*margin: 0 3% 0 3%;*/
 
+}
+
+article.hostFood table.user-info {
+  font-size: 0.85em;
+  text-align: left;
+}
+
+div.host-desc {
+ white-space: pre-wrap;      /* CSS3 */   
+ white-space: -moz-pre-wrap; /* Firefox */    
+ white-space: -pre-wrap;     /* Opera <7 */   
+ white-space: -o-pre-wrap;   /* Opera 7 */    
+ word-wrap: break-word;      /* IE */
+ text-align: left;
+}
+
+.host-desc {
+  margin-right: 7%;
+}
+
+h2 {
+  margin: 0;
 }
 
 /*

@@ -1,18 +1,18 @@
 <link rel="stylesheet" href="../../styles/user.css">
 <div id="user" ng-controller='UserCtrl as user' layout="column">
-<!-- in order to use the self properties, you must specify controller as a variable   -->
+  <!-- in order to use the self properties, you must specify controller as a variable   -->
   <div class='main-container'>
     <md-card>
-      <img ng-src="https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg" class="md-card-image">
-      <md-contents>
-      <div class="user-details" ng-model="user.user" layout="column">
-        <li class="username">{{user.user.name}}</li>
-        <div class="stars">
-            <img class="star" ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}">
-            <!-- <img class="star" ng-if=ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}"> -->
-             <span>({{user.user.numhostratings}})</span>
-            <span class="toggle-rating">host</span><span> | </span><span class="toggle-rating">guest</span></span>
-        </div>
+    <md-contents>
+    <img ng-src="{{user.user.facebookImg}}" class="md-card-image">
+    <div class="user-details" ng-model="user.user" layout="column">
+      <li class="username">{{user.user.name}}</li>
+      <div class="stars">
+        <img class="star" ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}">
+        <!-- <img class="star" ng-if=ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}"> -->
+        <span>({{user.user.numhostratings}})</span>
+        <span class="toggle-rating">host</span><span> | </span><span class="toggle-rating">guest</span></span>
+      </div>
       <ul>
         <li class="line-items"><strong>Job: </strong>"{{user.user.job}}"</li>
         <li class="line-items"><strong>Hobbies: </strong>{{user.user.hobbies}}</li>
@@ -20,7 +20,7 @@
         <li class="line-items"><strong>Aspirations: </strong>{{user.user.aspirations}}</li>
       </ul>
     </div>
-  </md-contents>
-  </md-card>
-</div>
+    </md-contents>
+    </md-card>
+  </div>
 </div>

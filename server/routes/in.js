@@ -71,7 +71,7 @@ module.exports = function(dbController, passport, isLoggedIn) {
 
 //------------------------------------------------------//
   //testing purposes only?? Do not thing that this is relevant to our app currenly
-  router.get('/user', function(req, res) {
+  router.get('/user', isLoggedIn, function(req, res) {
     //get the user details from the database
     dbController.user.get()
     .then(function(data) {
