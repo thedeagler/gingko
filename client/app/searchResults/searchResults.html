@@ -5,7 +5,7 @@
 
           <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
               <md-grid-tile ng-repeat="result in results.meals | filter:results.searchQuery" md-colspan='2' >
-                <a ng-href="/api/links/" ng-model="linkUrl">
+                <a ng-href="/#/meals/{{result.id}}">
                   <md-grid-tile-header>
                   </md-grid-tile-header>
                   <figure>
