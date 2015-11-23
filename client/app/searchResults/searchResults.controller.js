@@ -10,8 +10,9 @@
   function SearchResultsCtrl(multibarFactory, $state, $location, $window, $http, mealsData) {
     var self = this;
 
-    self.meals = mealsData.data.map(function(meal) {
+    self.meals = mealsData.data.map(function(meal, i) {
       return {
+        id: ++i,
         address: meal.address.join(', '),
         date: meal.date,
         host: meal.host,
