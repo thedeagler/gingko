@@ -1,5 +1,4 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
-
 var configAuth = require('./auth.js');
 var db = require('./db.js');
 
@@ -10,10 +9,11 @@ module.exports = function (passport) {
   });
   
   passport.deserializeUser(function (user, done) {
-    db.Users.find({ where: {id: user.id} })
-      .then(function(user) {
-        done(err, user);
-      });
+    // db.Users.find({ where: {id: user.id} })
+    //   .then(function(user) {
+    //     done(err, user);
+    //   });
+    done(null, user);
   });
   
   passport.use(new FacebookStrategy({
@@ -23,34 +23,49 @@ module.exports = function (passport) {
     profileFields: ['email', 'displayName', 'name', 'gender', 'profileUrl', 'picture.type(large)', 'friends']
   },
   function (token, refreshToken, profile, done) {
-    
+    db.Users.findOrCreate({
+      where: { facebookId: profile.id },
+      defaults: {
+        facebookId: profile._json.id,
+        username: profile._json.name,
+        firstName: profile._json.first_name,
+        lastName: profile._json.last_name,
+        email: profile._json.email,
+        gender: profile._json.gender,
+        profilePicture: profile._json.picture.data.url,
+        friends: profile._json.friends
+      }
+    });
+
     // Async
     process.nextTick(function () {
 
-      // Find user in the db based on their facebook id
-      // or create a user if there is no match
-      db.Users.findOrCreate({
-        where: { facebookId: profile.id },
-        defaults: {
-          facebookId: profile._json.id,
-          username: profile._json.name,
-          firstName: profile._json.first_name,
-          lastName: profile._json.last_name,
-          email: profile._json.email,
-          gender: profile._json.gender,
-          profilePicture: profile._json.picture.data.url,
-          friends: profile._json.friends
-        }
-      })
+      // // Find user in the db based on their facebook id
+      // // or create a user if there is no match
+      // db.Users.findOrCreate({
+      //   where: { facebookId: profile.id },
+      //   defaults: {
+      //     facebookId: profile._json.id,
+      //     username: profile._json.name,
+      //     firstName: profile._json.first_name,
+      //     lastName: profile._json.last_name,
+      //     email: profile._json.email,
+      //     gender: profile._json.gender,
+      //     profilePicture: profile._json.picture.data.url,
+      //     friends: profile._json.friends
+      //   }
+      // })
 
-      .then(function (user) {
-        done(null, user[0]);
-      })
+      // .then(function (user) {
+      //   done(null, user[0]);
+      // })
 
-      .catch(function (err) {
-        console.error(err);
-        done();
-      });
+      // .catch(function (err) {
+      //   console.error(err);
+      //   done(err);
+      // });
+
+      return done(null, profile);
 
     });
 

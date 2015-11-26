@@ -1,10 +1,14 @@
 var Sequelize = require("sequelize");
 
-//Unsure if we need password, come back to this
 var db;
-// Set db depending on deployment or local testing
+
+/********************************************
+            DETERMINE ENVIROMENT
+*********************************************/
+
+// Host application on Heroku
 if (process.env.DATABASE_URL) {
-  // the application is executed on Heroku ... use the postgres database
+  // The application is executed on Heroku ... use postgres
   var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
 
   db = new Sequelize(match[5], match[1], match[2], {
@@ -17,16 +21,19 @@ if (process.env.DATABASE_URL) {
       ssl: true
     }
   });
+
 } else {
-  // the application is executed on the local machine ... use mysql
+  // Host application locally 
   db = new Sequelize("tablesurfer", "admin", "admin", {
-    dialect: "postgres", // or 'sqlite', mysql', 'mariadb'
-    port: 5432 //(for postgres)
+    dialect: "postgres",
+    port: 5432
   });
 }
 
+/********************************************
+              DEFINE SCHEMAS
+*********************************************/
 var Users = db.define("Users", {
-  //here we will have to figure out the data from facebook on authentication
   username: {
     type: Sequelize.STRING,
     allowNull: false
@@ -59,8 +66,8 @@ var Users = db.define("Users", {
     type: Sequelize.JSON,
     allowNull: false
   }
-
 });
+
 
 var Meals = db.define("Meals", {
   title: {
@@ -77,10 +84,6 @@ var Meals = db.define("Meals", {
   }
 });
 
-//create Users Users foreign key for meal
-Users.hasOne(Meals);
-Meals.belongsTo(Users);
-
 
 var Restaurants = db.define("Restaurants", {
   name: {
@@ -95,19 +98,25 @@ var Restaurants = db.define("Restaurants", {
     type: Sequelize.JSON,
     allowNull: false
   }
-
 });
 
-//this creates restaurant foreign key for meal
+/********************************************
+            DEFINE RELATIONSHIPS
+*********************************************/
+// Create Users foreign key for meal
+Users.hasOne(Meals);
+Meals.belongsTo(Users);
+
+// This creates restaurant foreign key for meal
 Restaurants.hasOne(Meals);
 Meals.belongsTo(Restaurants);
 
 
-var Attendees = db.define("Attendees", {
-});
+// var Attendees = db.define("Attendees", {
+// });
 
-Users.belongsToMany(Meals, {through: 'Attendees'});
-Meals.belongsToMany(Users, {through: 'Attendees'});
+// Users.belongsToMany(Meals, {through: 'Attendees'});
+// Meals.belongsToMany(Users, {through: 'Attendees'});
 
 
 db.sync();
@@ -115,4 +124,4 @@ db.sync();
 exports.Meals = Meals;
 exports.Users = Users;
 exports.Restaurants = Restaurants;
-exports.Attendees = Attendees;
+// exports.Attendees = Attendees;

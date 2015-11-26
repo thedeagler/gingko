@@ -2,9 +2,11 @@
             DEPENDENCIES
 **************************************/
 var express = require('express');
+var session = require('express-session');
+var partials = require('express-partials');
 var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var cors = require('cors');
+// var morgan = require('morgan');
+// var cors = require('cors');
 var path = require('path');
 var passport = require('passport');
 var facebookStrategy = require('./services/passportStrategies');
@@ -13,9 +15,13 @@ var facebookStrategy = require('./services/passportStrategies');
             EXPRESS APP
 **************************************/
 var app = express();
-app.use(cors());
-app.use(morgan('dev'));
+// app.use(cors());
+// app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(partials());
+app.use(session({
+  secret: 'hackreactor'
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
