@@ -48,7 +48,7 @@ var request_yelp = function(set_parameters, callback) {
 
 };
 
-module.exports = function(db, passport, isLoggedIn) {
+module.exports = function(passport, isLoggedIn) {
 
   var router = express.Router();
 

@@ -1,7 +1,7 @@
 var express = require('express');
 var requestHandler = require('./../utils/requestHandler');
 
-module.exports = function(dbController, passport, isLoggedIn) {
+module.exports = function(passport, isLoggedIn) {
   var router = express.Router();
   
   // Get all meals

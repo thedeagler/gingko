@@ -19,7 +19,7 @@
       },
       'Logout': function() {
         var origin = $window.location.origin;
-        $window.location = origin + '/api/out/logout';
+        $window.location = origin + '/auth/logout';
       }
     };
 
@@ -27,7 +27,7 @@
 
     self.handleLogin = function() {
       var origin = $window.location.origin;
-      $window.location = origin + '/api/out/login';
+      $window.location = origin + '/auth/login';
     };
 
     self.handleOption = function(index) {
