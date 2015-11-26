@@ -1,5 +1,4 @@
 var express = require('express');
-// var partials = require('express-partials');
 var morgan = require('morgan');
 var cors = require('cors');
 var dbController = require('./services/controllers');
@@ -10,7 +9,9 @@ var facebookStrategy = require('./services/passportStrategies');
 // require the routes file
 var inRouter = require('./routes/in');
 var outRouter = require('./routes/out');
-var path = require('path');
+
+
+var mealsRouter = require('./routes/mealsRouter');
 
 // require isLoggedIn method so we can use it in routes to check if user is logged in
 var isLoggedIn = require('./services/isLoggedIn');
@@ -19,6 +20,8 @@ facebookStrategy(passport);
 
 inRouter = inRouter(dbController, passport, isLoggedIn);
 outRouter = outRouter(dbController, passport, isLoggedIn);
+
+mealsRouter = mealsRouter(dbController, passport, isLoggedIn);
 
 var bodyParser = require('body-parser');
 
@@ -34,6 +37,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/out', outRouter);
+
+
+app.use('/meals', mealsRouter);
 
 app.use(express.static(path.join(__dirname, '/../client')));
 
