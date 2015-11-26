@@ -53,18 +53,12 @@ var Meals = db.define("Meals", {
     type: Sequelize.STRING,
     allowNull: false
   },
-  time: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
   description: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  yelpData: {
-    type: Sequelize.JSON
   }
 });
+
 //create Users Users foreign key for meal
 Users.hasOne(Meals);
 Meals.belongsTo(Users);
@@ -75,20 +69,8 @@ var Restaurants = db.define("Restaurants", {
     type: Sequelize.STRING,
     allowNull: false
   },
-  address: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false
-  },
   contact: {
     type: Sequelize.STRING,
-    allowNull: false
-  },
-  lat: {
-    type: Sequelize.FLOAT,
-    allowNull: false
-  },
-  lng: {
-    type: Sequelize.FLOAT,
     allowNull: false
   },
   yelpData: {
@@ -102,22 +84,12 @@ var Restaurants = db.define("Restaurants", {
 Restaurants.hasOne(Meals);
 Meals.belongsTo(Restaurants);
 
-var Genres = db.define("Genres", {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-});
-
-Genres.hasOne(Restaurants);
-Restaurants.belongsTo(Genres);
 
 var Attendees = db.define("Attendees", {
 });
 
 Users.belongsToMany(Meals, {through: 'Attendees'});
 Meals.belongsToMany(Users, {through: 'Attendees'});
-
 
 
 db.sync();

@@ -91,7 +91,7 @@ module.exports = function(dbController, passport, isLoggedIn) {
 
   //------------------------------------------------------//
   router.post('/user', function(req, res) {
-
+    console.log('@!!!!!!!!!!!!!!@@@@@@@@@@@@@@@', req.body);
     var newUser = new classes.AddUser(req.body);
 
     dbController.user.post(newUser)

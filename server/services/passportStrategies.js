@@ -1,7 +1,7 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 var configAuth = require('./auth.js');
-var database = require('./db.js');
+var db = require('./db.js');
 
 module.exports = function (passport) {
   
@@ -10,7 +10,7 @@ module.exports = function (passport) {
   });
   
   passport.deserializeUser(function (user, done) {
-    database.Users.find({ where: {id: user.id} })
+    db.Users.find({ where: {id: user.id} })
       .then(function(user) {
         done(err, user);
       });
@@ -20,22 +20,31 @@ module.exports = function (passport) {
     clientID: configAuth.facebookAuth.clientID,
     clientSecret: configAuth.facebookAuth.clientSecret,
     callbackURL: configAuth.facebookAuth.callbackURL
-  }, function (token, refreshToken, profile, done) {
+  },
+  function (token, refreshToken, profile, done) {
+    // Async
     process.nextTick(function () {
-      database.Users.findOrCreate({ where:
-        {
+
+      // Find user in the db based on their facebook id
+      // or create a user if there is no match
+      db.Users.findOrCreate({
+        where: {
           facebookId: profile.id,
           username: profile.displayName
         }
       })
+
       .then(function (user) {
         done(null, user[0]);
       })
+
       .catch(function (err) {
-        console.log('err', err);
+        console.error(err);
         done();
       });
+
     });
+
   }));
 
 };

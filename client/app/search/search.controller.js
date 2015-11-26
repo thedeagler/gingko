@@ -41,7 +41,7 @@
     }
 
     self.querySearch = function(query) {
-      var path = '/api/out/yelp';
+      var path = '/yelp';
 
       return $http({
         url: path + '?term=' + query,
