@@ -10,7 +10,7 @@
 
     // If there is a user, continue with controller logic.
     // Otherwise, redirect to the home page.
-    // $rootScope.user variable will have all information about Facebook
+    // user variable will have all information about Facebook
     // Friends, profile picture, etc.
     var user = checkUser.data;
 
