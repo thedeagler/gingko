@@ -35,7 +35,7 @@ exports.addMeal = function(req) {
   var host;
 
   return db.Users.findOrCreate({
-      where: {username: req.username}
+      where: {facebookId: req.facebookId}
     })
     .then(function (user) {
       host = user;
