@@ -5,8 +5,6 @@ var express = require('express');
 var session = require('express-session');
 var partials = require('express-partials');
 var bodyParser = require('body-parser');
-// var morgan = require('morgan');
-// var cors = require('cors');
 var path = require('path');
 var passport = require('passport');
 var facebookStrategy = require('./services/passportStrategies');
@@ -15,8 +13,6 @@ var facebookStrategy = require('./services/passportStrategies');
             EXPRESS APP
 **************************************/
 var app = express();
-// app.use(cors());
-// app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(partials());
 app.use(session({
@@ -45,7 +41,6 @@ app.use('/meals', mealsRouter);
 app.use('/user', userRouter);
 app.use('/yelp', yelpRouter);
 app.use('/auth', facebookRouter);
-
 
 
 module.exports = app;

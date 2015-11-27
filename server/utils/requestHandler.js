@@ -30,7 +30,7 @@ exports.getMeals = function() {
 
 // POST to /meals
 exports.addMeal = function(req) {
-  // Need to define host outside of promise chain
+  // Must define host outside of promise chain
   // so it can be referenced in 2nd .then statement.
   var host;
 
@@ -71,15 +71,4 @@ exports.getUser = function(facebook_id) {
     .then(function(user) {
       return user;
     });
-};
-
-// POST to /users
-exports.addUser = function(user) {
-  return database.Users.create({
-    username: user.displayName,
-    facebookId: user.facebookId
-  })
-  .then(function (user) {
-    return user;
-  });
 };

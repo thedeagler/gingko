@@ -70,5 +70,4 @@ module.exports = function(passport, isLoggedIn) {
   });
 
   return router;
-
 };

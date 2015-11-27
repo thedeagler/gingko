@@ -103,6 +103,7 @@ var Restaurants = db.define("Restaurants", {
 /********************************************
             DEFINE RELATIONSHIPS
 *********************************************/
+
 // Create Users foreign key for meal
 Users.hasOne(Meals);
 Meals.belongsTo(Users);

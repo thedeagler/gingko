@@ -44,20 +44,5 @@ module.exports = function(passport, isLoggedIn) {
       });
   });
 
-  // TODO
-  // router.post('/join', function(req, res) {
-  //   var user = req.body;
-
-  //   requestHandler.joinMeal(user)
-  //     .then(function(data) {
-  //       res.status(200).send(data);
-  //     })
-  //     .catch(function(err) {
-  //       console.error(err);
-  //       res.status(404).send(err);
-  //     });
-  // });
-
   return router;
-
 };
