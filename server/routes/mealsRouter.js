@@ -31,7 +31,7 @@ module.exports = function(passport, isLoggedIn) {
   });
 
   // Add a new meal to the DB
-  router.post('/', function(req, res) {
+  router.post('/', isLoggedIn, function(req, res) {
     var meal = req.body;
 
     requestHandler.addMeal(meal)

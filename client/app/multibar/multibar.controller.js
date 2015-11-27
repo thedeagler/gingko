@@ -5,12 +5,23 @@
   .controller('MultibarCtrl', MultibarCtrl);
 
   // if factories are needed, inject here
-  MultibarCtrl.$inject = ['multibarFactory','$state', "$location", "$window", "$mdDialog"];
+  MultibarCtrl.$inject = ['multibarFactory','$state', "$location", "$window", "$mdDialog", 'checkUser'];
 
-  function MultibarCtrl(multibarFactory, $state, $location, $window, $mdDialog) {
+  function MultibarCtrl(multibarFactory, $state, $location, $window, $mdDialog, checkUser) {
+    
     var self = this;
-
     self.isLoggedIn = false;
+
+    // If there is a user, continue with controller logic.
+    // Otherwise, redirect to the home page.
+    // $rootScope.user variable will have all information about Facebook
+    // Friends, profile picture, etc.
+    var user = checkUser.data;
+    console.log('user', user);
+    if (user !== '') {
+      self.isLoggedIn = true;
+    }
+
     self.searchQuery = '';
 
     self.routes = {

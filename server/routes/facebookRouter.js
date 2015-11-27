@@ -11,9 +11,13 @@ module.exports = function(passport, isLoggedIn) {
     res.redirect('/');
   });
 
-  router.get('/logout', function(req, res) {
+  router.get('/logout', isLoggedIn, function(req, res) {
     req.logout();
     res.redirect('/');
+  });
+
+  router.get('/checkuser', function(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '');
   });
 
   return router;
