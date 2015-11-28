@@ -1,110 +1,145 @@
-
 * {
-  /*border: 1px solid black;*/
+    border: 1px solid transparent;
 }
 
-div#meal {
-  word-wrap: break-word;
-  padding-left: 0;
-  padding-right: 0;
-  margin: 0;
-  white-space: nowrap;
-  font-family: 'Asap', sans-serif;
+#meal {
+    padding: 0;
+
+    font-family: "Noto Sans", sans-serif;
 }
 
-section#mealHeaderImage {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  /*background-size: cover;*/
-  height: 500px;
-  /*  background-position: 0 100px;*/
+header {
+    height: 450px;
+
+    background: url("https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
-article.titleHeader.layout-align-start-center.layout-row {
-  margin-bottom: 2%;
-  border-bottom: 1px solid black;
+row {
+    margin-top: 0em;
+    margin-bottom: 1em;
 }
 
-div.button {
-  margin-right: -8px;
-  margin-bottom: 2%;
+.main,
+.top,
+.other {
+    margin-top: 1em;
+    margin-right: 11%;
+    margin-bottom: 0;
+    margin-left: 11%;
 }
 
-div.centerInfo {
-  margin: 0 auto;
-  width: 1000px;
-}
-.button.layout-align-end-end.layout-row {
-  margin-top: -57px;
+row column {
+    margin-right: 0.8em;
+    margin-bottom: 0;
 }
 
-button.md-raised.md-primary.md-button.md-ink-ripple {
-  width: 30%;
+h1,
+h2,
+h3,
+p {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0;
 }
 
-article.titleHeader span {
-  margin-right: 5%;
+.title {
+    font-size: 2em;
 }
 
+h1 {
+    font-size: 1.6em;
+    font-weight: bold;
 
-article.titleHeader span.date {
-  padding: 1% 1%;
-  font-size: 1em;
-  font-weight: bold;
-  margin: 0;
-}
-
-
-
-article.titleHeader span.dateTime {
-  /*margin: 0 3% 0 3%;*/
-  font-weight: bold;
-  font-size: 1.4em;
-}
-article.titleHeader span.notDateTime {
-  font-size: 1.2em;
-}
-
-article.titleHeader span.city {
-  font-style: italic;
-  /*margin: 0 3% 0 3%;*/
-
-}
-
-article.hostFood table.user-info {
-  font-size: 0.85em;
-  text-align: left;
-}
-
-div.host-desc {
- white-space: pre-wrap;      /* CSS3 */   
- white-space: -moz-pre-wrap; /* Firefox */    
- white-space: -pre-wrap;     /* Opera <7 */   
- white-space: -o-pre-wrap;   /* Opera 7 */    
- word-wrap: break-word;      /* IE */
- text-align: left;
-}
-
-.host-desc {
-  margin-right: 7%;
+    color: black;
+    background-color: #ffffef;
 }
 
 h2 {
-  margin: 0;
+    font-size: 1.3em;
+    font-weight: normal;
+    font-weight: bold;
+
+    text-align: initial;
 }
 
-/*
-article.titleHeader span:first-child {
-  margin-right: 1%;
+h3 {
+    font-size: 1em;
+    font-weight: bold;
 }
 
-article.titleHeader span.notDateTime {
-  margin-bottom: 0.6em;
+h4 {
+    font-size: 0.8em;
 }
 
+.profile-pic {
+    height: 20em;
 
-
-span.location {
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    /*background: url("https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg") no-repeat center center scroll;*/
+    background-size: cover;
 }
-*/
+
+.button {
+    margin-top: -5em;
+}
+
+.attend-button {
+    width: 20em;
+    height: 3.5em;
+    margin-right: 3%;
+}
+
+#map {
+    position: relative;
+
+    height: 700px;
+}
+
+img.yelp {
+    width: 6em;
+    margin-bottom: -0.25em;
+}
+
+.desc {
+    padding-right: 1em;
+
+    text-align: left;
+}
+
+.attr {
+    font-weight: bold;
+}
+
+.title {
+    padding-bottom: 0;
+
+    text-align: left;
+}
+
+h2.ng-binding {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    text-align: center;
+}
+
+.host-info {
+    text-align: initial;
+}
+
+.yelp-info {
+    text-align: left;
+}
+
+.date {
+    padding-top: 1em;
+
+    text-align: center;
+}
+
+.titleInfo {
+    background-color: #ffffef;
+}
