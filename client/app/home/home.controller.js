@@ -30,13 +30,13 @@
     });
 
 
-    // // Set img src for hero image
-    // document.getElementById('hero_container').style.backgroundImage = "url('http://losangeleslawyersource.com/wp-content/uploads/2013/08/serious-injuries.jpg')";
-    //
-    // // Set img src for suggestions
-    // document.getElementById('near').style.backgroundImage = "url('http://blenderartists.org/forum/attachment.php?attachmentid=303132&d=1397678638')";
-    // document.getElementById('value').style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/en/a/a3/Toronto_Propane_Explosion.jpg')";
-    // document.getElementById('soon').style.backgroundImage = "url('http://images.wisegeek.com/explosion-of-fire.jpg')";
+    // Set img src for hero image
+    document.getElementById('hero_container').style.backgroundImage = "url('http://losangeleslawyersource.com/wp-content/uploads/2013/08/serious-injuries.jpg')";
+
+    // Set img src for suggestions
+    document.getElementById('near').style.backgroundImage = "url('http://blenderartists.org/forum/attachment.php?attachmentid=303132&d=1397678638')";
+    document.getElementById('value').style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/en/a/a3/Toronto_Propane_Explosion.jpg')";
+    document.getElementById('soon').style.backgroundImage = "url('http://images.wisegeek.com/explosion-of-fire.jpg')";
 
 
     self.go = function(e, v) {
