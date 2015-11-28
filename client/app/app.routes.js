@@ -91,7 +91,7 @@
           checkUser: ['$http', checkUser],
           mealsData: function($http, $stateParams) {
             console.log('$stateParams =', $stateParams.id);
-            return $http({method: 'GET', url: '/api/in/meals/' + $stateParams.id});
+            return $http({method: 'GET', url: '/meals/' + $stateParams.id});
           }
         }
       })
