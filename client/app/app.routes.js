@@ -89,11 +89,10 @@
         },
         resolve: {
           checkUser: ['$http', checkUser],
-          mealsData: ['$http', '$stateParams', function($http, $stateParams) {
-            console.log('$stateParams =', $stateParams);
-            // console.log(window.location.href.slice.)
-            return $http({method: 'GET', url: '/meals/' + $stateParams.id});
-          }]
+          mealsData: function($http, $stateParams) {
+            console.log('$stateParams =', $stateParams.id);
+            return $http({method: 'GET', url: '/api/in/meals/' + $stateParams.id});
+          }
         }
       })
       .state('results', {

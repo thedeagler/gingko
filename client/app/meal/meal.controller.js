@@ -1,64 +1,41 @@
-// This controller should handle the unique view of a meal page
-// Example: http://localhost.com/#/meal/4 (should show the 4th meal)
-
 (function() {
   'use strict';
 
   angular.module('app')
     .controller('MealCtrl', MealCtrl);
 
-  MealCtrl.$inject = ['$http', '$location', '$window', 'mealsData', '$stateParams'];
+  MealCtrl.$inject = ['multibarFactory', '$state', "$location", "$window", "$http", 'mealsData', 'mealFactory'];
 
-  function MealCtrl($http, $location, $window, Map, mealsData, $stateParams) {
+  function MealCtrl(multibarFactory, $state, $location, $window, $http, mealsData, mealFactory) {
     var self = this;
-    self.id = $location.path();
-    self.data;
-    var map;
 
     self.activate = function() {
-      self.getMeal();
+      self.attendees = mealsData.data.attendees;
+      self.mealsData = mealsData.data.meal;
+      self.yelpData = JSON.parse(mealsData.data.meal.yelpData);
+      // console.log('self.attendees =', self.attendees);
+      // console.log('self.mealsData =', self.mealsData);
+      // console.log('self.yelpData =', self.yelpData);
+      self.formatTime();
+      self.drawMap();
     };
 
-    self.getMeal = function() {
-      var path = $window.location.origin;
-      console.log('Getting users from DB, path is: ', path + $location.path());
-      return $http({
-          method: 'GET',
-          url: path + $location.path()
-        })
-        .then(function(response) {
-          console.log(' ******** RESPONSE RETURNED **********');
-          console.log('Get users data is here, resp.data: ', response);
-          self.data = response.data;
-
-          self.mealsData = response.data.meal;
-          self.yelpData = JSON.parse(response.data.meal.yelpData);
-          console.log('self.mealsData.meal.yelpData =', JSON.parse(response.data.meal.yelpData));
-          console.log(self.data);
-
-          var mapCanvas = document.getElementById('map');
-          var myLatLng = {
-            lat: self.data.meal.Restaurant.lat,
-            lng: self.data.meal.Restaurant.lng
-          };
-          var mapOptions = {
-            center: new google.maps.LatLng(self.data.meal.Restaurant.lat, self.data.meal.Restaurant.lng),
-            zoom: 12,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-
-          map = new google.maps.Map(mapCanvas, mapOptions);
-
-          var marker = new google.maps.Marker({
-            position: myLatLng,
-            title: "hello world!"
-          });
-
-          marker.setMap(map);
-
-
-        });
+    self.drawMap = function() {
+      mealFactory.drawMap(Map, self.mealsData.Restaurant.lat, self.mealsData.Restaurant.lng);
     };
+
+    self.formatTime = function() {
+      var momentDate = moment(self.mealsData.date);
+      var createdAt = self.mealsData.createdAt;
+      self.mealsData.formattedDay = momentDate.format('dddd');
+      self.mealsData.formattedDate = momentDate.format('MMM Do');
+      self.mealsData.formattedTime = momentDate.format('h:mm a');
+      self.mealsData.formattedCreatedAt = moment(createdAt).format('MMM Do');
+      self.mealsData.relativeCreatedAt = moment(createdAt, 'YYYYMMDD').fromNow();
+      self.mealsData.relativeTime = moment(momentDate, 'YYYYMMDD').fromNow();
+      self.mealsData.typeOfMeal = mealFactory.getGreetingTime(momentDate);
+    };
+
 
     self.activate();
 
