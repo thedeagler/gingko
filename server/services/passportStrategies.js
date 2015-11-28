@@ -9,10 +9,6 @@ module.exports = function (passport) {
   });
   
   passport.deserializeUser(function (user, done) {
-    // db.Users.find({ where: {id: user.id} })
-    //   .then(function(user) {
-    //     done(err, user);
-    //   });
     done(null, user);
   });
   
@@ -40,7 +36,7 @@ module.exports = function (passport) {
       }
     });
 
-    // Async
+    // Return the profile after Async operations are complete
     process.nextTick(function () {
       return done(null, profile);
     });

@@ -4,7 +4,6 @@
 ******************************************/
 
 // Note: 'o' represents the formatted object returned by the function.
-
 exports.formatMeal = function(meal) {
   var _meal = {
     title: meal.dataValues.title,

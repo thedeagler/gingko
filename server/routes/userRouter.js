@@ -4,7 +4,7 @@ var requestHandler = require('./../utils/requestHandler');
 module.exports = function(passport, isLoggedIn) {
   var router = express.Router();
 
-  // Get a user by id
+  // GET a user by id
   router.get('/user/:id', isLoggedIn, function(req, res) {
     var facebook_id = req.params.id.slice(1);
 

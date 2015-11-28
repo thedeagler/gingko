@@ -4,7 +4,7 @@ var requestHandler = require('./../utils/requestHandler');
 module.exports = function(passport, isLoggedIn) {
   var router = express.Router();
   
-  // Get all meals
+  // GET all meals
   router.get('/', function(req, res) {
     requestHandler.getMeals()
       .then(function(data) {
@@ -16,7 +16,7 @@ module.exports = function(passport, isLoggedIn) {
       });
   });
 
-  // Get a meal by its id
+  // GET a meal by its id
   router.get('/:id', function(req, res) {
     var meal_id = req.params.id;
 
@@ -30,7 +30,7 @@ module.exports = function(passport, isLoggedIn) {
       });
   });
 
-  // Add a new meal to the DB
+  // POST a new meal to the DB
   router.post('/', isLoggedIn, function(req, res) {
     var meal = req.body;
 

@@ -6,9 +6,10 @@ var n = require('nonce')();
 var qs = require('querystring');
 var auth = require('../services/auth.js');
 
+// Config for Yelp oAuth Request
+// set_parameters: object with params to search
+// callback: callback(error, response, body)
 var request_yelp = function(set_parameters, callback) {
-  // set_parameters: object with params to search
-  // callback: callback(error, response, body)
   var httpMethod = 'GET';
   var url = 'http://api.yelp.com/v2/search';
 
@@ -26,7 +27,7 @@ var request_yelp = function(set_parameters, callback) {
     oauth_version: '1.0'
   };
 
-  // parameters combined in order of importance
+  // Parameters combined in order of importance
   var parameters = _.assign(default_parameters, set_parameters, required_parameters);
 
   var consumerSecret = auth.yelp.consumerSecret;
@@ -60,6 +61,7 @@ module.exports = function(passport, isLoggedIn) {
       limit: "10"
     };
 
+    // GET query results from Yelp
     request_yelp(params, function(err, response, body) {
       if (err) {
         console.error("Error hitting Yelp's Search API: ", err);
