@@ -1,131 +1,147 @@
-  <link rel="stylesheet" href="../../styles/normalize.css">
-  <link rel="stylesheet" href="../../styles/kube-grid.css">
-  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="../../styles/meal.css">
-
-
-  <div id="meal" ng-cloak>
-    <header>
-      <div class="button" layout="row" layout-align="end end">
-        <md-button class="md-raised md-primary">Yes, I want to attend!</md-button>
-      </div>
-    </header>
-
-    <div class="titleInfo">
-      <row class="top">
-        <column class="date" cols="1">
-        <h2>{{meal.mealsData.formattedDay}}
-        {{meal.mealsData.formattedDate}}</h2>
-        <p>{{meal.mealsData.relativeTime}}</p>
+<link rel="stylesheet" href="../../styles/normalize.css">
+<link rel="stylesheet" href="../../styles/kube-grid.css">
+<link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../../styles/meal.css">
+<div id="meal" ng-cloak>
+  <!-- Ugly Yelp Image as background - perhaps change later -->
+  <header style="background:url({{meal.yelpData.image_url}}) repeat top fixed; background-size:30%; height:300px;">
+  </header>
+  <!-- Event information as title -->
+  <div class="titleInfo">
+    <div class="button" layout="row" layout-align="end end">
+      <md-button class="md-raised md-primary attend-button">Yes, I want to attend!</md-button>
+    </div>
+    <!-- Date of event -->
+    <row class="top">
+      <column class="date" cols="1">
+        <h2>{{meal.meal.formattedDay}}
+          {{meal.meal.formattedDate}}
+        </h2>
+        <p>{{meal.meal.relativeTime}}</p>
       </column>
+      <!-- Event when, where -->
       <column class="event-info" cols="11">
-      <h1 class="title">
-        <span>{{meal.mealsData.typeOfMeal}}</span>
-        <span>at</span>
-        <span>{{meal.yelpData.name}}</span>
-        <span>at</span>
-        <span>{{meal.mealsData.formattedTime}}</span>
-      </h1>
-      <h2>
-        <span class="desc">{{meal.yelpData.categories[0][0]}}</span>
-        <span class="desc"><img class="yelp" src="{{meal.yelpData.rating_img_url}}" alt="yelp-rating"></span>
-        <span class="desc">{{meal.yelpData.location.neighborhoods[0]}}, {{meal.yelpData.location.city}}</span>
-        <span class="desc">Between {{meal.yelpData.location.cross_streets}}</span>
-      </h2>
+        <h1 class="title">
+          <span>{{meal.meal.typeOfMeal}}</span>
+          <span>at</span>
+          <span>{{meal.yelpData.name}}</span>
+          <span>at</span>
+          <span>{{meal.meal.formattedTime}}</span>
+        </h1>
+        <!-- Event neighborhood, cross-streets, category, stars -->
+        <h2>
+          <span class="desc"><img class="yelp" src="{{meal.yelpData.rating_img_url}}" alt="yelp-rating"></span>
+          <span class="desc">{{meal.yelpData.categories[0][0]}}</span>
+          <span class="desc">{{meal.yelpData.location.neighborhoods[0]}}, {{meal.yelpData.location.city}}</span>
+          <span class="desc">Between {{meal.yelpData.location.cross_streets}}</span>
+        </h2>
+      </column>
+    </row>
+  </div>
+
+
+
+  <!-- Main content of the page -->
+  <row class="main">
+    <column cols="6" class="single-column">
+
+
+      <!-- Host information -->
+      <h1>Your Host</h1>
+      <row class="host">
+        <!-- profile-picture -->
+        <column cols="5" class="profile-pic" style="background: url({{meal.host.profilePicture}}) no-repeat top scroll; background-size: cover; height: 20em;">
+        </column>
+
+        <!-- host info -->
+        <column cols="7" class="host-info">
+          <row class="host">
+            <column cols="5" class="attr">Event Name</column>
+            <column cols="7" class="ans">{{meal.meal.title}}</column>
+          </row>
+          <row class="host">
+            <column cols="5" class="attr">Description</column>
+            <column cols="7" class="ans">"{{meal.meal.description}}"</column>
+          </row>
+          <row class="host">
+            <column cols="5" class="attr">Date created</column>
+            <column cols="7" class="ans">{{meal.meal.formattedCreatedAt}}
+              <br>
+              ({{meal.meal.relativeCreatedAt}})
+            </column>
+          </row>
+          <row class="host">
+            <column cols="5" class="attr">Name</column>
+            <column cols="7" class="ans">{{meal.host.firstName}} {{meal.host.lastName}}</column>
+          </row>
+          <row class="host">
+            <column cols="5" class="attr">Gender</column>
+            <column cols="7" class="ans">{{meal.host.gender}}</column>
+          </row>
+          <!-- <row class="host">
+            <column cols="5" class="attr">Email</column>
+            <column cols="7" class="ans">{{meal.host.email}}</column>
+            </row> -->
+          <row class="host">
+            <column cols="5" class="attr">Total Friends</column>
+            <column cols="7" class="ans">{{meal.host.friends.summary.total_count}}</column>
+          </row>
+          <row class="host">
+            <column cols="5" class="attr">Also Friends With:</column>
+            <column cols="7" class="ans">{{meal.host.friendsList}}</column>
+          </row>
+        </column>
+      </row>
+
+
+      <!-- Yelp Information row -->
+      <h1>Your Restaurant</h1>
+      <row class="yelp">
+
+        <!-- yelp table -->
+        <column cols="6" class="yelp-info">
+          <row>
+            <column cols="5" class="attr">Address</column>
+            <column cols="7" class="ans">{{meal.yelpData.location.address[0]}}</column>
+          </row>
+          <row>
+            <column cols="5" class="attr">Phone</column>
+            <column cols="7" class="ans">{{meal.yelpData.display_phone}}</column>
+          </row>
+          <row>
+            <column cols="5" class="attr">Yelp URL</column>
+            <column cols="7" class="ans"><a href="{{meal.yelpData.url}}">Link</a></column>
+          </row>
+          <row>
+            <column cols="5" class="attr">Review Count</column>
+            <column cols="7" class="ans">{{meal.yelpData.review_count}}</column>
+          </row>
+        </column>
+
+        <!-- Yelp Quote -->
+        <column cols="6" class="yelp-quote">
+          <h3>What Others Say About It:</h3>
+          <row>
+            <column cols="12">"{{meal.yelpData.snippet_text}}"</column>
+          </row>
+        </column>
+
+
+      </row>
     </column>
+
+
+    <!-- Maps -->
+    <column cols="6" class="map">
+      <div id='map'></div>
+    </column>
+
   </row>
-</div>
 
-
-<row class="main">
-  <column cols="6" class="single-column">
-  <!-- host row -->
-    <h1>Your Host</h1>
-    <row class="host">
-
-    <!-- profile-picture -->
-    <!-- add style:"background-img: url(fb-link)" -->
-      <column cols="5" class="profile-pic">
-      </column>
-
-      <!-- host info -->
-      <column cols="7" class="host-info">
-        <!-- <h2>Host Info</h2> -->
-        <row class="host">
-          <column cols="5" class="attr">Event Name</column>
-          <column cols="7" class="ans">{{meal.mealsData.title}}</column>
-        </row>
-        <row class="host">
-          <column cols="5" class="attr">Name</column>
-          <column cols="7" class="ans">{{meal.mealsData.User.username}}</column>
-        </row>
-        <row class="host">
-          <column cols="5" class="attr">Gender</column>
-          <column cols="7" class="ans">{{meal.mealsData.User.gender}}</column>
-        </row>
-        <row class="host">
-          <column cols="5" class="attr">Total Friends</column>
-          <column cols="7" class="ans">{{meal.mealsData.totalFriends}}</column>
-        </row>
-        <row class="host">
-          <column cols="5" class="attr">Date created</column>
-          <column cols="7" class="ans">{{meal.mealsData.formattedCreatedAt}}
-          <br>
-          ({{meal.mealsData.relativeCreatedAt}})
-          </column>
-        </row>
-        <row class="host">
-          <column cols="5" class="attr">Description</column>
-          <column cols="7" class="ans">"{{meal.mealsData.description}}"</column>
-        </row>
-      </column>
-    </row>
-
-    <!-- yelp row -->
-    <h1>Your Restaurant</h1>
-    <row class="yelp">
-
-      <!-- yelp table -->
-      <column cols="5" class="yelp-info">
-        <row>
-          <column cols="5" class="attr">Address</column>
-          <column cols="7" class="ans">{{meal.yelpData.location.address[0]}}</column>
-        </row>
-        <row>
-          <column cols="5" class="attr">Phone</column>
-          <column cols="7" class="ans">{{meal.yelpData.display_phone}}</column>
-        </row>
-        <row>
-          <column cols="5" class="attr">Yelp URL</column>
-          <column cols="7" class="ans"><a href="{{meal.yelpData.url}}">Link</a></column>
-        </row>
-        <row>
-          <column cols="5" class="attr">Review Count</column>
-          <column cols="7" class="ans">{{meal.yelpData.review_count}}</column>
-        </row>
-      </column>
-
-      <!-- yelp quote -->
-      <column cols="6" class="yelp-quote">
-      <h3>What Others Say About It:</h3>
-        <row>
-          <column cols="12">"{{meal.yelpData.snippet_text}}"</column>
-        </row>
-      </column>
-
-    </row>
-  </column>
-
-
-<!-- Maps -->
-  <column cols="6" class="map">
-    <div id='map'></div>
-  </column>
-
-</row>
-
-
+  <!-- Spacing  -->
   <row style="height:100px;"></row>
+
+  <!-- Other Events - TODO -->
   <h1>Other Events You May Enjoy</h1>
   <row class="other">
     <column cols="4" class="rest">
@@ -145,9 +161,6 @@
     </column>
   </row>
 
-<footer>Made with Love from Hack Reactor</footer>
 
 </div>
-
 <script src="../../styles/moment.js"></script>
-

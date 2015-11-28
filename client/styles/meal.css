@@ -5,7 +5,7 @@
 #meal {
     padding: 0;
 
-    font-family: "Raleway", sans-serif;
+    font-family: "Noto Sans", sans-serif;
 }
 
 header {
@@ -16,7 +16,7 @@ header {
 }
 
 row {
-    margin-top: 1em;
+    margin-top: 0em;
     margin-bottom: 1em;
 }
 
@@ -52,7 +52,7 @@ h1 {
     font-weight: bold;
 
     color: black;
-    background-color: #fffff2;
+    background-color: #ffffef;
 }
 
 h2 {
@@ -75,15 +75,18 @@ h4 {
 .profile-pic {
     height: 20em;
 
-    background: url("https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg") no-repeat center center scroll;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    /*background: url("https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg") no-repeat center center scroll;*/
     background-size: cover;
 }
 
 .button {
-    margin-top: 24em;
+    margin-top: -5em;
 }
 
-.md-raised {
+.attend-button {
     width: 20em;
     height: 3.5em;
     margin-right: 3%;
@@ -138,5 +141,5 @@ h2.ng-binding {
 }
 
 .titleInfo {
-    background-color: #fffff2;
+    background-color: #ffffef;
 }
