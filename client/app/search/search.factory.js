@@ -28,7 +28,7 @@
         data: data
       })
       .then(function (response) {
-        console.log("successfully posted!");
+        console.log("successfully posted!", response.data);
         return response.data;
       });
     }
