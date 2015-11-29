@@ -10,7 +10,7 @@
 md-datepicker {
   height: 50px;
   margin: 0 10px 8px 0;
-  padding: 2px 0 0 0;
+  padding: 0;
 }
 
 .md-datepicker-input-container {
