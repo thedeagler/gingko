@@ -25,18 +25,11 @@
                 <span class="item-name">
                   <span><strong> {{item.name}} </strong></span>
                 </span>
-<!--                 <span class="item-metadata">
-                  <span class="item-metastat">
-                    <span>phone {{item.phone}}</span>
-                  </span> -->
                  <span class="item-name">
-                  <img ng-repeat="i in item.rating track by $index" ng-src="{{i}}">
-<!--                   <ul id="navlist">
-                   <li ng-repeat="i in item.rating track by $index">wat
-                      <img ng-src="{{i}}"> 
-                   </li>
-                  </ul> -->
+                  <!-- <img ng-repeat="i in item.rating track by $index" ng-src="{{i}}"> -->
+                  <img ng-src="{{item.yelpData.rating_img_url_small}}" style="margin: 0 5px 0 10px">
                 </span>
+                <span>({{item.yelpData.review_count}})</span>
               </md-item-template>
               <md-not-found>
                 <span>Sorry, no resturaunts found! Please try again!</span>
@@ -58,7 +51,7 @@
             <!-- </span> -->
             <!-- time input -->
               <md-input-container class="md-input" id="time-input" flex="40">
-                <input type="time" ng-model="vm.meal.time" placeholder="Enter Time">
+                <input type="time" ng-model="vm.meal.date" placeholder="Enter Time">
               </md-input-container>
             <!-- num of attendess -->
               <md-select id="num-attendees" flex="30" ng-model="vm.meal.attendees" placeholder="Num. of Surfers">
@@ -79,7 +72,7 @@
             </md-input-container>
 
           <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button type="submit" class="md-raised md-primary" ng-disabled="!vm.meal.title || !vm.meal.restaurant || !vm.meal.date || !vm.meal.time || !vm.meal.attendees || !vm.meal.description">Add</md-button>
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="!vm.meal.title || !vm.meal.restaurant || !vm.meal.date || !vm.meal.attendees || !vm.meal.description">Add</md-button>
           </section>
         </md-card>
         <!-- user submission end -->

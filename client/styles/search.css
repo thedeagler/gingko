@@ -1,5 +1,5 @@
 .md-input {
-
+  font-size: 
   margin: 0;
 }
 
@@ -10,8 +10,15 @@
 md-datepicker {
   height: 50px;
   margin: 0 10px 8px 0;
-  padding: 0;
+  padding: 2px 0 0 0;
 }         
+
+.md-datepicker-input-container {
+  /*position: absolute;*/
+  /*bottom: 180px;*/
+  margin: 3px 0 0 0;
+  padding: 15px 0 0 0;
+}
 
 #time-input {
   height: 50px;
@@ -23,4 +30,5 @@ md-datepicker {
 #num-attendees {
   margin-top: 19px;
 }
+
 
