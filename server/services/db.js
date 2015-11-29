@@ -74,7 +74,7 @@ var Meals = db.define("Meals", {
     allowNull: false
   },
   date: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATE,
     allowNull: false
   },
   description: {
@@ -93,6 +93,22 @@ var Restaurants = db.define("Restaurants", {
     type: Sequelize.STRING,
     allowNull: false
   },
+  rating: {
+    type: Sequelize.DECIMAL,
+    allowNull: false
+  },
+  numRates: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  // lat: {
+  //   type: Sequelize.DOUBLE,
+  //   allowNull: false
+  // },
+  // lon: {
+  //   type: Sequelize.DOUBLE,
+  //   allowNull: false
+  // },
   yelpData: {
     type: Sequelize.JSON,
     allowNull: false
@@ -121,6 +137,7 @@ Meals.belongsTo(Restaurants);
 
 db.sync();
 
+exports.sequelize = Sequelize;
 exports.Meals = Meals;
 exports.Users = Users;
 exports.Restaurants = Restaurants;

@@ -29,15 +29,15 @@
     self.selectedItem = undefined;
 
     self.makeStarArr = function(rating) {
-      var fullStarPath = '../../styles/star.png'
-      var halfStarPath = '../../styles/star-half.png'
+      var fullStarPath = '../../styles/star.png';
+      var halfStarPath = '../../styles/star-half.png';
       var emptyStarPath = '../../styles/star-empty.png';
 
       var starArr = [emptyStarPath, emptyStarPath,
         emptyStarPath, emptyStarPath, emptyStarPath];
       var i = 0;
       while (i < rating) {
-        if (i + .5 === rating) {
+        if (i + 0.5 === rating) {
           starArr[i]  = halfStarPath;
         } else {
           starArr[i] = fullStarPath;
@@ -45,7 +45,7 @@
         i++;
       }
       return starArr;
-    }
+    };
 
     self.querySearch = function(query) {
       var path = '/yelp';
@@ -75,7 +75,6 @@
               });
             }
           });
-
         }, function(response) {
           self.data = response.data || "Request failed";
           self.status = response.status;
@@ -85,17 +84,18 @@
           console.log(self.data);
           return self.data;
         });
-
     };
 
     self.add = function () {
-      console.log(self.meal);
       searchFactory.postMeal(self.meal)
       .then(function(response) {
-        $window.location = '/#/home';
+        if(response.id){
+          $window.location = '/#/meals/' + response.id;
+        }
+        else {
+          $window.location = '/#/home';
+        }
       });
-
     };
-
 }
 })();

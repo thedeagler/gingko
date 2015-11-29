@@ -8,19 +8,17 @@
   .controller('HomeCtrl', HomeCtrl);
 
   // if factories are needed, inject here
-  HomeCtrl.$inject = ['homeFactoryTest', 'homeFactory', '$state', "$location", "$window", 'locationFactory'];
+  HomeCtrl.$inject = ['$rootScope', 'homeFactory', '$state', "$location", "$window", 'locationFactory'];
 
-  function HomeCtrl(homeFactoryTest, homeFactory, $state, $location, $window, locationFactory) {
+  function HomeCtrl($rootScope, homeFactory, $state, $location, $window, locationFactory) {
     var self = this;
-    self.geolocation = false;
     // Meal suggestions
     self.tables = {
-      near: [],
-      soon: [],
-      value: []
+      date: [],
+      rating: [],
+      distance: [],
     };
 
-    self.geolocation = locationFactory.getLocation();
 
     // Set heights of elements
     var rowHeight = (window.innerHeight - 64)/ 2;
@@ -29,54 +27,61 @@
       el.style.height = rowHeight + "px";
     });
 
-
-    // Set img src for hero image
-    document.getElementById('hero_container').style.backgroundImage = "url('http://losangeleslawyersource.com/wp-content/uploads/2013/08/serious-injuries.jpg')";
-
-    // Set img src for suggestions
-    document.getElementById('near').style.backgroundImage = "url('http://blenderartists.org/forum/attachment.php?attachmentid=303132&d=1397678638')";
-    document.getElementById('value').style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/en/a/a3/Toronto_Propane_Explosion.jpg')";
-    document.getElementById('soon').style.backgroundImage = "url('http://images.wisegeek.com/explosion-of-fire.jpg')";
-
-
-    self.go = function(e, v) {
-      console.log('went');
+    self.init = function(e, v) {
+      if(!$rootScope.geolocation) {
+        locationFactory.getLocation(function (position) {
+          $rootScope.geolocation = {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+            acc: position.coords.accuracy,
+          };
+          self.getRecs();
+        });
+      }
+      else {
+        self.getRecs();
+      }
     };
 
     // TODO: Get closest, highest rated, and soonest available meals instead of all of them
-    self.getData = function() {
-      //call the factory function to get all of the meals
-      homeFactoryTest.getMeals()
-      .then(function(data) {
+    self.getRecs = function() {
+      for(var sortBy in self.tables) {
+        var params = {
+          sortBy: sortBy,
+          location: null,
+          numResults: 3,
+        };
 
-        /*
-        data = {
-          address: Array[3]
-            0: "360 Jessie St"
-            1: "Union Square"
-            2: "San Francisco, CA 94103"
-          date: "November 21, 2015"
-          description: "Best meal"
-          host: "undefined undefined"
-          time: "12:00:00 am"
-          title: "Foodbruh"
+        // If sorting by location, app must wait for callback to continue
+        if(sortBy === 'distance') {
+          params.location = $rootScope.geolocation;
         }
-        */
-        // self.tables = data;
-      });
+
+        homeFactory.getTop(params)
+        .then((function(sortBy) {
+          return function(data) {
+
+            self.tables[sortBy] = data;
+            if(data.length > 0){
+              document.getElementById(sortBy).style.backgroundImage = "url('"+ data[0].restaurant.yelpData.image_url +"')";
+            }
+          };
+        })(sortBy))
+        .catch(queryFail);
+      }
+
+      function queryFail(err) {
+        console.error('Query Failed',
+          err.data.replace(/<br>/g, '\n').replace(/ &nbsp;/g, '>'),
+          err);
+      }
     };
 
-    self.viewTable = function() {
-      homeFactoryTest.getEvent(mealID)
-      .then(function(data) {
-        //this badly written function is to manually route to the meal of id one(written in a last minute panic to try and get it working)
-        //it would be better to change the viw using ui-sref? in the view and then from
-        //that controller call the function to get the correct data from the database!
-        $window.location.href = "/#/meals/1";
-      });
+    self.goToMeal = function (mealID) {
+      $window.location = '/#/meals/' + mealID;
     };
 
     // Initialize tables on page load
-    self.getData();
+    self.init();
   }
 })();

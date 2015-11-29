@@ -6,6 +6,7 @@
 // Note: 'o' represents the formatted object returned by the function.
 exports.formatMeal = function(meal) {
   var _meal = {
+    id: meal.id,
     title: meal.dataValues.title,
     date: meal.dataValues.date,
     description: meal.dataValues.description,
@@ -29,9 +30,15 @@ exports.formatMeals = function(meals) {
 };
 
 exports.formatRestaurant = function(restaurant) {
+  console.log(restaurant);
+
   var o = {
     name: restaurant.name,
     contact: restaurant.phone,
+    // lat: restaurant.coordinate.lat,
+    // lon: restaurant.coordinate.lng,
+    rating: restaurant.yelpData.rating,
+    numRates: restaurant.yelpData.review_count,
     yelpData: restaurant.yelpData
   };
 

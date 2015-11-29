@@ -1,17 +1,17 @@
 .md-input {
-  font-size: 
+  font-size:
   margin: 0;
 }
 
 * {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 md-datepicker {
   height: 50px;
   margin: 0 10px 8px 0;
-  padding: 2px 0 0 0;
-}         
+  padding: 0;
+}
 
 .md-datepicker-input-container {
   /*position: absolute;*/
@@ -31,4 +31,6 @@ md-datepicker {
   margin-top: 19px;
 }
 
-
+.item-address {
+  font-weight: 200;
+}
