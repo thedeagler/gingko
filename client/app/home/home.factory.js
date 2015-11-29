@@ -8,39 +8,22 @@
 
   function homeFactory($http) {
     var services = {
-      getMeals : getMeals,
-      getEvent : getEvent
+      getTop : getTop,
     };
 
     return services;
 
-    function getEvent (mealID) {
+    function getTop(params) {
       return $http({
-      method: 'GET',
-      //hard coded in number(id as the meal id) for the minute need to work out how to get this id
-      //number to be kept with the info displayed on the events page
-      //so that when it is clicked on to show the whole event you know what event to query from the db
-      //this also wants mocking to the meal view
-      url: '/api/in/meals/' + mealID
+        method: 'POST',
+        url: '/meals/top',
+        data: params,
       })
       .then(function (response) {
         return response.data;
       });
     }
-
-    function getMeals () {
-      return $http({
-      method: 'GET',
-      url: '/api/in/meals'
-      })
-      .then(function (response) {
-        return response.data;
-      });
-    }
-
-
   }
-
 })();
 
 

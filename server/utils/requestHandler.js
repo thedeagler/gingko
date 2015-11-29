@@ -5,7 +5,7 @@ var utils = require('./formatHandler');
               MEAL ROUTES
 *****************************************/
 
-// GET to /meals
+// GET to /meals/:id
 exports.getMeal = function(meal_id) {
   return db.Meals.find({
       where: {id: meal_id},
@@ -17,7 +17,7 @@ exports.getMeal = function(meal_id) {
     });
 };
 
-// GET to /meals:id
+// GET to /meals
 exports.getMeals = function() {
   return db.Meals.findAll({
       include: [db.Users, db.Restaurants]
@@ -26,6 +26,64 @@ exports.getMeals = function() {
       var o = utils.formatMeals(meals);
       return o;
     });
+};
+
+// POST to /meals/top
+exports.getTop = function(params) {
+  if(params.sortBy === 'date') {
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sort by date!!!!!!!!!!!!!!!!!');
+
+    return db.Meals.findAll({
+      include: [db.Users, db.Restaurants],
+      limit: params.numResults,
+      order: [['date', 'ASC']],
+      where: {
+        date: {
+          $gt: new Date().toString(),
+        },
+      },
+    })
+    .then(function (meals) {
+      var o = utils.formatMeals(meals);
+      console.log(o);
+
+      return o;
+    });
+  }
+  else if(params.sortBy === 'rating') {
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sort by rating!!!!!!!!!!!!!!!!!');
+
+    return db.Meals.findAll({
+      include: [db.Restaurants, db.Users],
+      limit: params.numResults,
+      order: [[db.Restaurants, 'rating', 'DESC']],
+      // order: [['name', 'DESC']],
+      // Either need to use restaurants as main and figure out how to json this way
+      // or use Meals as main, and figure out how to use table Restaurants in line 59
+    })
+    .then(function (meals) {
+      var o = utils.formatMeals(meals);
+      console.log(o);
+
+      return o;
+    });
+  }
+
+  // } else if(params.sortBy === 'rating') {
+
+  // } else if(params.location) {
+  //   // Find sort by distance in miles
+  //   db.Meals.query("SELECT latitude, longitude, SQRT(\
+  //       POW(69.1 * (latitude - " + location.lat + "), 2) +\
+  //       POW(69.1 * (" + location.lon + " - longitude) * COS(latitude / 57.3), 2)) AS distance\
+  //       FROM locations\
+  //       WHERE SQRT(\
+  //       POW(69.1 * (latitude - 31.8679), 2) +\
+  //       POW(69.1 * (-116.6567 - longitude) * COS(latitude / 57.3), 2)) < 1\
+  //       ORDER BY distance");
+  // } else {
+
+  // }
 };
 
 // POST to /meals

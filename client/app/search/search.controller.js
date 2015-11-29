@@ -75,7 +75,6 @@
               });
             }
           });
-
         }, function(response) {
           self.data = response.data || "Request failed";
           self.status = response.status;
@@ -85,17 +84,13 @@
           console.log(self.data);
           return self.data;
         });
-
     };
 
     self.add = function () {
-      console.log(self.meal);
       searchFactory.postMeal(self.meal)
       .then(function(response) {
-        $window.location = '/#/home';
+        $window.location = '/#/meals/' + response.id;
       });
-
     };
-
 }
 })();

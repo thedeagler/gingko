@@ -29,9 +29,13 @@ exports.formatMeals = function(meals) {
 };
 
 exports.formatRestaurant = function(restaurant) {
+  console.log(restaurant);
+
   var o = {
     name: restaurant.name,
     contact: restaurant.phone,
+    rating: restaurant.yelpData.rating,
+    numRates: restaurant.yelpData.review_count,
     yelpData: restaurant.yelpData
   };
 

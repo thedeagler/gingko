@@ -11,7 +11,7 @@ md-datepicker {
   height: 50px;
   margin: 0 10px 8px 0;
   padding: 0;
-}         
+}
 
 #time-input {
   height: 50px;
@@ -24,3 +24,6 @@ md-datepicker {
   margin-top: 19px;
 }
 
+.item-address {
+  font-weight: 200;
+}
