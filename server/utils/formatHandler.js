@@ -35,8 +35,8 @@ exports.formatRestaurant = function(restaurant) {
   var o = {
     name: restaurant.name,
     contact: restaurant.phone,
-    lat: restaurant.coordinate.lat,
-    lon: restaurant.coordinate.lng,
+    // lat: restaurant.coordinate.lat,
+    // lon: restaurant.coordinate.lng,
     rating: restaurant.yelpData.rating,
     numRates: restaurant.yelpData.review_count,
     yelpData: restaurant.yelpData

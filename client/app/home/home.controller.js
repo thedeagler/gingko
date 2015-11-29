@@ -27,15 +27,6 @@
       el.style.height = rowHeight + "px";
     });
 
-
-    // Set img src for hero image
-    document.getElementById('hero_container').style.backgroundImage = "url('http://i.imgur.com/4ZCnwZD.jpg')";
-
-    // // Set img src for suggestions
-    // document.getElementById('near').style.backgroundImage = "url('http://blenderartists.org/forum/attachment.php?attachmentid=303132&d=1397678638')";
-    // document.getElementById('value').style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/en/a/a3/Toronto_Propane_Explosion.jpg')";
-
-
     self.init = function(e, v) {
       console.log('went');
 

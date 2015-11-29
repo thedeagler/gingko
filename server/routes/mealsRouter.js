@@ -47,12 +47,10 @@ module.exports = function(passport, isLoggedIn) {
   // POST with location to get top suggestions
   router.post('/top', function(req, res) {
     var params = req.body;
-    console.log(params.sortBy);
-
     /* Example param object
     params = {
       sortBy: string,
-      location: {lat: x, lon: y, acc: z,},
+      location: object,
       numResults: number,
     }
     */
