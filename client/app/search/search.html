@@ -59,7 +59,7 @@
             <!-- </span> -->
             <!-- time input -->
               <md-input-container class="md-input" id="time-input" flex="40">
-                <input type="time" ng-model="vm.meal.time" placeholder="Enter Time">
+                <input type="time" ng-model="vm.meal.date" placeholder="Enter Time">
               </md-input-container>
             <!-- num of attendess -->
               <md-select id="num-attendees" flex="30" ng-model="vm.meal.attendees" placeholder="Num. of Surfers">
@@ -80,7 +80,7 @@
             </md-input-container>
 
           <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button type="submit" class="md-raised md-primary" ng-disabled="!vm.meal.title || !vm.meal.restaurant || !vm.meal.date || !vm.meal.time || !vm.meal.attendees || !vm.meal.description">Add</md-button>
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="!vm.meal.title || !vm.meal.restaurant || !vm.meal.date || !vm.meal.attendees || !vm.meal.description">Add</md-button>
           </section>
         </md-card>
         <!-- user submission end -->
