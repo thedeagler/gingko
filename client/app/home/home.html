@@ -14,7 +14,7 @@
   layout="row" layout-align="space-around center"
   layout-sm="column">
     <!-- Card featuring nearest tables -->
-    <div id="distance" class="card" ng-click="home.goToMeal(home.tables.distance[0].meal.id)" flex="30">
+    <div id="distance" class="card" ng-mouseenter="distance = 'md-whiteframe-5dp'" ng-mouseleave="distance = ''" ng-class="distance" ng-click="home.goToMeal(home.tables.distance[0].meal.id)" flex="30">
       <div class="head">
         <h3>Nearby</h3>
       </div>
@@ -35,7 +35,7 @@
       </div>
     </div>
     <!-- Card featuring highest rated tables -->
-    <div id="rating" class="card" ng-click="home.goToMeal(home.tables.rating[0].meal.id)" flex="30">
+    <div id="rating" class="card" ng-mouseenter="rating = 'md-whiteframe-5dp'" ng-mouseleave="rating = ''" ng-class="rating" ng-click="home.goToMeal(home.tables.rating[0].meal.id)" flex="30">
       <div class="head">
         <h3>Highest Rated</h3>
       </div>
@@ -45,19 +45,21 @@
       <div ng-if="home.tables.rating.length">
         <h1>{{home.tables.rating[0].restaurant.name}}</h1>
         <div class="foot">
-          <img src="{{home.tables.distance[0].host.profilePicture}}" class="profile_picture">
-          <div class="feat_container">
-            <h1 class="feature"><img src="{{home.tables.rating[0].restaurant.yelpData.rating_img_url_large}}"/></h1>
-          </div>
-          <div class="description">
-            <p>{{home.tables.rating[0].meal.description}}</p>
+          <div class="foot_container">
+            <img src="{{home.tables.distance[0].host.profilePicture}}" class="profile_picture">
+            <div class="feat_container">
+              <h1 class="feature"><img src="{{home.tables.rating[0].restaurant.yelpData.rating_img_url_large}}"/></h1>
+            </div>
+            <div class="description">
+              <p>{{home.tables.rating[0].meal.description}}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Card featuring soonest tables -->
-    <div id="date" class="card" ng-click="home.goToMeal(home.tables.date[0].meal.id)" flex="30">
+    <div id="date" class="card" ng-mouseenter="date = 'md-whiteframe-5dp'" ng-mouseleave="date = ''" ng-class="date" ng-click="home.goToMeal(home.tables.date[0].meal.id)" flex="30">
       <div class="head">
         <h3>Coming Up</h3>
       </div>

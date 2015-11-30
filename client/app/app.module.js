@@ -4,8 +4,8 @@ angular.module('app', ['ui.router', 'ngMaterial', 'ngMessages'])
 .config(['$mdThemingProvider', function ($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('deep-purple')
-    .accentPalette('indigo')
-    .warnPalette('orange');
+    .accentPalette('amber')
+    .warnPalette('red');
 }]);
 
 // Available palettes:
