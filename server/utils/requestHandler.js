@@ -7,14 +7,65 @@ var utils = require('./formatHandler');
 
 // GET to /meals/:id
 exports.getMeal = function(meal_id) {
+  var thisMeal;
+
   return db.Meals.find({
       where: {id: meal_id},
-      include: [db.Users, db.Restaurants]
+      include: [db.Users, db.Restaurants, db.Attendees]
     })
     .then(function (meal) {
-      var o = utils.formatMeal(meal);
+      // map meal object to array of just user ids
+      // select from db.users where $or on all of the ids
+      // get an array of users
+      thisMeal = meal;
+
+      var usersArray = meal.Attendees.map(function(user) {
+        return user.dataValues.UserId;
+      });
+
+      return db.Users.findAll({
+        where: {
+          id: {
+            $in: usersArray
+          }
+        }
+      });
+    })
+    .then(function(attendees) {
+      var o = utils.formatMeal(thisMeal, attendees);
       return o;
     });
+};
+
+// PUT to /meals/:id
+exports.joinMeal = function(meal_id, facebook_id) {
+  var user_id;
+
+  return exports.getUser(facebook_id)
+  .then(function (user) {
+    user_id = user.dataValues.id;
+    return user_id;
+  })
+  .then(function() {
+    return db.Attendees.find({
+      where: {
+        $and: {
+          MealId: meal_id, UserId: user_id
+        }
+      },
+    });
+  })
+  .then(function (meal) {
+    if (!meal) {
+      return db.Attendees.create({
+       MealId: meal_id,
+       UserId: user_id
+      });
+    } else {
+      return 'meal and user already associated';
+    }
+  });
+
 };
 
 // GET to /meals
@@ -154,7 +205,7 @@ exports.addMeal = function(req) {
 
 // GET TO /user/:id
 exports.getUser = function(facebook_id) {
-  return database.Users.find({
+  return db.Users.find({
       where: { facebookId: facebook_id }
     })
     .then(function(user) {

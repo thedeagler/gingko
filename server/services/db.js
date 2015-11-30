@@ -115,6 +115,9 @@ var Restaurants = db.define("Restaurants", {
   }
 });
 
+var Attendees = db.define("Attendees", {
+});
+
 /********************************************
             DEFINE RELATIONSHIPS
 *********************************************/
@@ -127,12 +130,19 @@ Meals.belongsTo(Users);
 Restaurants.hasOne(Meals);
 Meals.belongsTo(Restaurants);
 
+Meals.hasMany(Attendees);
 
-// var Attendees = db.define("Attendees", {
-// });
+Users.belongsToMany(Meals, { through: {
+  model: Attendees,
+  unique: false,
+  }
+});
 
-// Users.belongsToMany(Meals, {through: 'Attendees'});
-// Meals.belongsToMany(Users, {through: 'Attendees'});
+Meals.belongsToMany(Users, { through: {
+  model: Attendees,
+  unique: false,
+  }
+});
 
 
 db.sync();
@@ -141,4 +151,4 @@ exports.sequelize = Sequelize;
 exports.Meals = Meals;
 exports.Users = Users;
 exports.Restaurants = Restaurants;
-// exports.Attendees = Attendees;
+exports.Attendees = Attendees;
