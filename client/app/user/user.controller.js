@@ -9,7 +9,7 @@
   function UserCtrl(userFactory) {
 
     var self = this;
-
+    self.starview = 'host';
     self.makeStarArr = function(rating) {
       var fullStarPath = '../../styles/star.png';
       var halfStarPath = '../../styles/star-half.png';
@@ -31,7 +31,7 @@
 
     userFactory.getUserInfo(function(user) {
       user.hostrating = self.makeStarArr(user.hostrating);
-      user.userrating = self.makeStarArr(user.userrating);
+      user.guestrating = self.makeStarArr(user.guestrating);
       self.user = user;
     });
 
