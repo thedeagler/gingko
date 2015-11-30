@@ -33,14 +33,17 @@
 
       //dummy data:
       cb({
+        facebookImg: 'http://placecho.herokuapp.com/500/500',
+        name: 'Kyle Cho',
         job: "Software Engineer",
         hostrating: 4.5,
         numhostratings: 57,
         guestrating: 5,
         numguestratings: 23,
         hobbies: "Giving pro tips.",
-        favorite_eatery: 'Sarku @ The Westfield',
-        aspirations: "President of 'murica"
+        // favorite_eatery: 'Sarku @ The Westfield',
+        aspirations: "President of 'murica",
+        contact_info: 'kylecho@gmail.com'
       });
     }
 

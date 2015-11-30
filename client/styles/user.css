@@ -21,9 +21,15 @@
 li {
   list-style-type: none;
 }
+
+.md-card {
+  width: 20%;
+  
+}
 .username {
   font-size: 40px;
   font-weight: 700;
+  font-family: "Noto Sans";
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   text-align: left;
@@ -38,19 +44,27 @@ li {
 };
 
 .stars {
-  position: absolute;
-  height: 16px;
-  width: 80px;
 }
 
 
 .star {
-    height:16px;
-    width: 16px;
-    display: inline;
+  height:16px;
+  width: 16px;
+  display: inline;
 }
 
 .toggle-rating {
   text-decoration: underline;
   color: blue;
+}
+
+.stars {
+  margin-left: 30px;
+  padding-left: 50px;
+}
+
+.active {
+  font-weight: 700;
+  font-size: 20px;
+  /*border: 2px solid gray;*/
 }

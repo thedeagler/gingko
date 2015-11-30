@@ -1,27 +1,60 @@
 <link rel="stylesheet" href="../../styles/user.css">
-<div id="user" layout="column">
+<div id="user" layout="column" flex="50">
   <!-- in order to use the self properties, you must specify controller as a variable   -->
   <div class='main-container'>
     <md-card>
-    <md-contents>
-    <img ng-src="{{user.user.facebookImg}}" class="md-card-image">
-    <div class="user-details" ng-model="user.user" layout="column">
-      <li class="username">{{user.user.name}}</li>
-      <div class="stars">
-        <img class="star" ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}" ng-show="starview === 'host'">
-        <img class="star" ng-repeat="i in user.user.guestrating track by $index" ng-src="{{i}}" ng-show="starview === 'guest'">
-        <span ng-show="starview === 'host'">({{user.user.numhostratings}})</span>
-        <span ng-show="starview === 'guest'">({{user.user.numguestratings}})</span>
-        <span class="toggle-rating" ng-click="starview = 'host'">host</span><span> | </span><span class="toggle-rating"  ng-click="starview = 'guest'">guest</span></span>
+      <md-contents>
+      <img ng-src="{{user.user.facebookImg}}" class="md-card-image">
+      <div class="user-details" ng-model="user.user" layout="column">
+        <li class="username">{{user.user.name}}</li>
+        <div class="stars" ng-init="starview = 'host'">
+          <img class="star" ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}" ng-show="starview === 'host'">
+          <img class="star" ng-repeat="i in user.user.guestrating track by $index" ng-src="{{i}}" ng-show="starview === 'guest'">
+          <span ng-show="starview === 'host'">({{user.user.numhostratings}})</span>
+          <span ng-show="starview === 'guest'">({{user.user.numguestratings}})</span>
+          <span class="toggle-rating" ng-click="starview = 'host'" ng-class="{ 'active': starview === 'host' }">host</span><span> | </span><span class="toggle-rating"  ng-click="starview = 'guest'" ng-class="{ 'active': starview === 'guest' }">guest</span></span>
+        </div>
+        <ul>
+          <li class="line-items"><strong>Job: </strong>"{{user.user.job}}"</li>
+          <li class="line-items"><strong>Hobbies: </strong>{{user.user.hobbies}}</li>
+          <li class="line-items"><strong>Favorite Eatery: </strong>{{user.user.favorite_eatery}}</li>
+          <li class="line-items"><strong>Aspirations: </strong>{{user.user.aspirations}}</li>
+        </ul>
       </div>
-      <ul>
-        <li class="line-items"><strong>Job: </strong>"{{user.user.job}}"</li>
-        <li class="line-items"><strong>Hobbies: </strong>{{user.user.hobbies}}</li>
-        <li class="line-items"><strong>Favorite Eatery: </strong>{{user.user.favorite_eatery}}</li>
-        <li class="line-items"><strong>Aspirations: </strong>{{user.user.aspirations}}</li>
-      </ul>
-    </div>
-    </md-contents>
+      </md-contents>
     </md-card>
   </div>
+
+
 </div>
+
+<!-- <div flex="50" layout="column">
+  <md-card>
+    <md-card-header>
+      <md-card-avatar>
+        <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+      </md-card-avatar>
+      <md-card-header-text>
+        <span class="md-title">Title</span>
+        <span class="md-subhead">subhead</span>
+      </md-card-header-text>
+    </md-card-header>
+    <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">In-card actions</span>
+        <span class="md-subhead">Description</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="start center">
+      <md-button>Action 1</md-button>
+      <md-button>Action 2</md-button>
+    </md-card-actions>
+    <md-card-content>
+      <p>
+        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+      </p>
+    </md-card-content>
+  </md-card>
+</div> -->
