@@ -44,10 +44,7 @@ exports.getTop = function(params) {
       },
     })
     .then(function (meals) {
-      var o = utils.formatMeals(meals);
-      console.log(o);
-
-      return o;
+      return utils.formatMeals(meals);
     });
   }
   else if(params.sortBy === 'rating') {
@@ -57,16 +54,50 @@ exports.getTop = function(params) {
       include: [db.Restaurants, db.Users],
       limit: params.numResults,
       order: [[db.Restaurants, 'rating', 'DESC']],
-      // order: [['name', 'DESC']],
-      // Either need to use restaurants as main and figure out how to json this way
-      // or use Meals as main, and figure out how to use table Restaurants in line 59
+      where: {
+        date: {
+          $gt: new Date().toString(),
+        },
+      },
     })
     .then(function (meals) {
-      var o = utils.formatMeals(meals);
-      console.log(o);
-
-      return o;
+      return utils.formatMeals(meals);
     });
+  }
+  // TODO: DOESN'T ACTUALLY GET BY DISTANCE RIGHT NOW
+  else if(params.sortBy === 'distance' && params.location) {
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sort by distance!!!!!!!!!!!!!!!!!');
+
+    return db.Meals.findAll({
+      include: [db.Restaurants, db.Users],
+      limit: params.numResults,
+      order: [[db.Restaurants, 'rating', 'DESC']],
+      where: {
+        date: {
+          $gt: new Date().toString(),
+        },
+      },
+      // where: {
+      //   // Lat and lon within 5 miles
+      //   $and: {
+      //     db.Restaurants.lat: {
+      //       $between: [params.location.lat]
+      //     }
+      //   },
+      // },
+    })
+    .then(function (meals) {
+      return utils.formatMeals(meals);
+    });
+    // // Find sort by distance in miles
+    // db.Meals.query("SELECT latitude, longitude, SQRT(\
+    //     POW(69.1 * (latitude - " + location.lat + "), 2) +\
+    //     POW(69.1 * (" + location.lon + " - longitude) * COS(latitude / 57.3), 2)) AS distance\
+    //     FROM locations\
+    //     WHERE SQRT(\
+    //     POW(69.1 * (latitude - 31.8679), 2) +\
+    //     POW(69.1 * (-116.6567 - longitude) * COS(latitude / 57.3), 2)) < 1\
+    //     ORDER BY distance");
   }
 
   // } else if(params.sortBy === 'rating') {

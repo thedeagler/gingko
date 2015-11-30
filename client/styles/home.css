@@ -18,14 +18,16 @@
 }
 
 h1#title {
-  color: tomato;
+  color: white;
   font-size: 100px;
-  font-weight: 100;
+  font-weight: 900;
   margin: 0;
 }
 
 h3#subtitle {
+  color: white;
   font-size: 25px;
+  font-weight: 200;
   margin: 0;
 }
 
@@ -38,7 +40,7 @@ h3#subtitle {
 }
 
 .card {
-  background-color: firebrick;
+  background-color: #3F51B5;
   position: relative;
   -webkit-background-size: cover;
   background-size: cover;
@@ -49,13 +51,16 @@ h3#subtitle {
 }
 
 .head > h3 {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #673ab7;
+  color: white;
+  font-weight: 200;
   text-align: center;
   padding: 5px;
   margin: 0;
 }
 
 .foot {
+  background-color: #673ab7;
   width:100%;
   position: absolute;
   bottom: 0;
@@ -66,7 +71,8 @@ h3#subtitle {
 }
 
 .feature {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #673ab7;
+  color: white;
   display: inline-block;
   padding: 5px;
   margin: 0;
@@ -74,5 +80,29 @@ h3#subtitle {
 }
 
 .description {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #673ab7;
+  color: white;
+  margin-bottom: 0;
+}
+
+.card > div > h1 {
+  background-color: #673ab7;
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+.profile_picture {
+  position: relative;
+  width: 100px;
+  border: 5px solid #673ab7;
+  border-radius: 55px;
+  float: left;
+}
+
+.description > p {
+  display: inline-block;
+  position:absolute;
+  bottom: 0;
+  margin: 0px;
 }
