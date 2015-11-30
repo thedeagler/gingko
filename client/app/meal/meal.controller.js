@@ -15,19 +15,47 @@
 
     self.activate = function() {
       self.host = mealsData.data.host;
+      self.host.gender = _.capitalize(self.host.gender);
       self.meal = mealsData.data.meal;
       self.restaurant = mealsData.data.restaurant;
       self.yelpData = mealsData.data.restaurant.yelpData;
+      self.meal.title = self.meal.title.split(" ").map(function(item) {
+        return _.capitalize(item);
+      }).join(" ");
+      self.meal.description = _.capitalize(self.meal.description.replace('"', ''));
       self.mealId = mealsData.data.meal.id;
 
       self.formatTime();
       self.drawMap();
       self.getFriends();
       self.getAttendees();
+      self.getOtherMeals();
+
       console.log('self.host =', self.host);
       console.log('self.meal =', self.meal);
       console.log('self.restaurant =', self.restaurant);
       console.log('self.yelpData =', self.yelpData);
+      console.log('mealsData =', mealsData);
+
+    };
+
+    self.getOtherMeals = function() {
+      mealFactory.getOtherMeals()
+        .then(function(otherMealData) {
+          self.otherMeals = _.map(otherMealData.data, function(otherMeal, i) {
+            return {
+              id: ++i,
+              title: otherMeal.meal.title.split(" ").map(function(item) {
+                return _.capitalize(item);
+              }).join(" "),
+              address: otherMeal.restaurant.yelpData.location.display_address.join(', '),
+              yelpData: otherMeal.restaurant.yelpData
+            };
+          });
+        })
+        .catch(function(err) {
+          console.log("Error in getting other meal.");
+        });
     };
 
     self.drawMap = function() {
@@ -53,8 +81,8 @@
     };
 
     self.getAttendees = function() {
-      self.meal.attendees = ["Person1", "Person2"]
-    }
+      self.meal.attendees = ["Person1", "Person2"];
+    };
 
 
     self.activate();
