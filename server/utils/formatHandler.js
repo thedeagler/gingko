@@ -4,7 +4,7 @@
 ******************************************/
 
 // Note: 'o' represents the formatted object returned by the function.
-exports.formatMeal = function(meal) {
+exports.formatMeal = function(meal, attendeesData) {
   var _meal = {
     id: meal.id,
     title: meal.dataValues.title,
@@ -17,6 +17,14 @@ exports.formatMeal = function(meal) {
     restaurant: meal.Restaurant.dataValues,
     host: meal.User.dataValues
   };
+  
+  if (attendeesData) {
+    var attendees = attendeesData.map(function(attendee) {
+      return attendee.dataValues;
+    });
+
+    o.attendees = attendees;
+  }
 
   return o;
 };

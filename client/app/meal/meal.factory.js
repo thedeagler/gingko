@@ -4,15 +4,27 @@
 	angular.module('app')
 		.factory('mealFactory', mealFactory);
 
-	mealFactory.$inject = [];
+	mealFactory.$inject = ['$http'];
 
-	function mealFactory() {
+	function mealFactory($http) {
 		var services = {
 			getGreetingTime: getGreetingTime,
-			drawMap: drawMap
+			drawMap: drawMap,
+			joinMeal: joinMeal
 		};
 
 		return services;
+
+		function joinMeal(mealId) {
+			return $http({
+				method: 'PUT',
+				url: '/meals/' + mealId,
+			})
+			.then(function (response) {
+				console.log("successfully posted!", response.data);
+				return response.data;
+			});
+		}
 
 		function getGreetingTime(m) {
 			var g;
