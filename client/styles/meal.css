@@ -1,5 +1,5 @@
 * {
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
 }
 
 #meal {
@@ -8,10 +8,11 @@
 }
 
 header {
-    height: 450px;
+    /*height: 450px;*/
 
-    background: url("https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg") no-repeat center center fixed;
-    background-size: cover;
+    height:300px;
+    /*background: url("https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg") no-repeat center center fixed;*/
+    /*background-size: cover;*/
 }
 
 row {

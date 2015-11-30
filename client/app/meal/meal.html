@@ -3,13 +3,14 @@
 <link rel="stylesheet" href="../../styles/meal.css">
 <div id="meal" ng-cloak>
   <!-- Ugly Yelp Image as background - perhaps change later -->
-  <header style="background:url({{meal.yelpData.image_url}}) repeat top fixed; background-size:30%; height:300px;">
+  <header style="background:url({{meal.yelpData.image_url}}) repeat top fixed;     background-size:30%;">
   </header>
+  <div class="button" layout="row" layout-align="end end">
+    <md-button class="md-raised md-primary attend-button">Yes, I want to attend!</md-button>
+  </div>
   <!-- Event information as title -->
   <div class="titleInfo">
-    <div class="button" layout="row" layout-align="end end">
-      <md-button class="md-raised md-primary attend-button">Yes, I want to attend!</md-button>
-    </div>
+
     <!-- Date of event -->
     <row class="top">
       <column class="date" cols="1">
