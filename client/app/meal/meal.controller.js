@@ -13,6 +13,10 @@
       mealFactory.joinMeal(self.mealId);
     };
 
+    self.joinMeal = function() {
+      mealFactory.joinMeal(self.mealId);
+    };
+
     self.activate = function() {
       self.host = mealsData.data.host;
       self.host.gender = _.capitalize(self.host.gender);
