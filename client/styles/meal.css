@@ -2,6 +2,10 @@
     /*border: 1px solid transparent;*/
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 #meal {
     padding: 0;
 
@@ -11,7 +15,7 @@
 header {
     /*height: 450px;*/
     height: 300px;
-    /*background: url("https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg") no-repeat center center fixed;*/
+    background: url("https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg") no-repeat center center fixed;
     /*background-size: cover;*/
 }
 
@@ -94,7 +98,7 @@ h4 {
 #map {
     position: relative;
 
-    height: 53em;
+    height: 48em;
 }
 
 img.yelp {
@@ -145,7 +149,7 @@ h2.ng-binding {
 }
 
 @media (max-width: 987px) {
-    body {
+/*    body {
         font-size: 1.1em;
     }
 
@@ -163,7 +167,7 @@ h2.ng-binding {
 
     h4 {
         font-size: 1.2em;
-    }
+    }*/
 
     column.profile-pic {
         height: 50em;
