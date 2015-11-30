@@ -22,21 +22,12 @@
               <!-- autocomplete display start -->
               <span ng-if="item.name" md-highlight-text="vm.searchText">{{item.name}}</span>
               <md-item-template>
-                 <span class="item-rating">
+                <span class="item-rating">
                   <img ng-repeat="i in item.rating track by $index" ng-src="{{i}}">
-<!--                   <ul id="navlist">
-                   <li ng-repeat="i in item.rating track by $index">wat
-                      <img ng-src="{{i}}">
-                   </li>
-                  </ul> -->
                 </span>
                 <span class="item-name">
                   <span><strong> {{item.name}} </strong></span>
                 </span>
-<!--                 <span class="item-metadata">
-                  <span class="item-metastat">
-                    <span>phone {{item.phone}}</span>
-                  </span> -->
                 <span class="item-address">{{item.display_address[0]}}, {{item.display_address[1]}}</span>
               </md-item-template>
               <md-not-found>
