@@ -14,8 +14,10 @@
     <!-- Date of event -->
     <row class="top">
       <column class="date" cols="1">
-        <h2>{{meal.meal.formattedDay}}
-          {{meal.meal.formattedDate}}
+        <h2>
+        {{meal.meal.date | date: 'EEEE'}}
+        <br>
+        {{meal.meal.date | date: 'MMM d'}}
         </h2>
         <p>{{meal.meal.relativeTime}}</p>
       </column>
@@ -26,7 +28,7 @@
           <span>at</span>
           <span>{{meal.yelpData.name}}</span>
           <span>at</span>
-          <span>{{meal.meal.formattedTime}}</span>
+          <span>{{meal.meal.date| date: 'h:mm a'}}</span>
         </h1>
         <!-- Event neighborhood, cross-streets, category, stars -->
         <h2>
