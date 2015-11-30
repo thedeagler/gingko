@@ -4,7 +4,6 @@
 
 #meal {
     padding: 0;
-
     font-family: "Noto Sans", sans-serif;
 }
 
@@ -24,9 +23,9 @@ row {
 .top,
 .other {
     margin-top: 1em;
-    margin-right: 11%;
+    margin-right: 10%;
     margin-bottom: 0;
-    margin-left: 11%;
+    margin-left: 10%;
 }
 
 row column {
@@ -42,6 +41,8 @@ p {
     padding-bottom: 0.5em;
     margin: 0;
 }
+
+
 
 .title {
     font-size: 2em;
@@ -74,12 +75,11 @@ h4 {
 
 .profile-pic {
     height: 20em;
-
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
     /*background: url("https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg") no-repeat center center scroll;*/
-    background-size: cover;
+
 }
 
 .button {
@@ -95,7 +95,7 @@ h4 {
 #map {
     position: relative;
 
-    height: 700px;
+    height: 53em;
 }
 
 img.yelp {
@@ -130,7 +130,7 @@ h2.ng-binding {
     text-align: initial;
 }
 
-.yelp-info {
+.yelp-info, .attendees {
     text-align: left;
 }
 
@@ -142,4 +142,30 @@ h2.ng-binding {
 
 .titleInfo {
     background-color: #ffffef;
+}
+
+@media (max-width: 987px) {
+    body {
+        font-size: 1.1em;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    h3 {
+        font-size: 1.4 em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
+    column.profile-pic {
+        height: 50em;
+    }
 }

@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="../../styles/normalize.css">
 <link rel="stylesheet" href="../../styles/kube-grid.css">
-<link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="../../styles/meal.css">
 <div id="meal" ng-cloak>
   <!-- Ugly Yelp Image as background - perhaps change later -->
@@ -50,7 +49,7 @@
       <h1>Your Host</h1>
       <row class="host">
         <!-- profile-picture -->
-        <column cols="5" class="profile-pic" style="background: url({{meal.host.profilePicture}}) no-repeat top scroll; background-size: cover; height: 20em;">
+        <column cols="5" class="profile-pic" style="background: url({{meal.host.profilePicture}}) no-repeat top scroll; background-size: cover;">
         </column>
 
         <!-- host info -->
@@ -63,13 +62,7 @@
             <column cols="5" class="attr">Description</column>
             <column cols="7" class="ans">"{{meal.meal.description}}"</column>
           </row>
-          <row class="host">
-            <column cols="5" class="attr">Date created</column>
-            <column cols="7" class="ans">{{meal.meal.formattedCreatedAt}}
-              <br>
-              ({{meal.meal.relativeCreatedAt}})
-            </column>
-          </row>
+
           <row class="host">
             <column cols="5" class="attr">Name</column>
             <column cols="7" class="ans">{{meal.host.firstName}} {{meal.host.lastName}}</column>
@@ -90,8 +83,36 @@
             <column cols="5" class="attr">Also Friends With:</column>
             <column cols="7" class="ans">{{meal.host.friendsList}}</column>
           </row>
+          <row class="host">
+            <column cols="5" class="attr">Joined TableSurfer:</column>
+            <column cols="7" class="ans">{{meal.meal.formattedCreatedAt}}
+              <br>
+              ({{meal.meal.relativeCreatedAt}})
+            </column>
+          </row>
         </column>
       </row>
+
+
+
+
+        <!-- Who's Attending Information row -->
+        <h1>Who's Attending</h1>
+        <row class="attendees" ng-repeat="friend in meal.meal.attendees">
+          <!-- attendees table -->
+
+
+          <column cols="12" class="attendees-info">
+            <row>
+              <column cols="5" class="attr">PHOTO</column>
+              <column cols="7" class="ans">{{friend}}</column>
+            </row>
+          </column>
+
+        </row>
+
+
+
 
 
       <!-- Yelp Information row -->
