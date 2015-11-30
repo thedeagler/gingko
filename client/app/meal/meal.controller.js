@@ -17,13 +17,14 @@
       self.restaurant = mealsData.data.restaurant;
       self.yelpData = mealsData.data.restaurant.yelpData;
 
+      self.formatTime();
+      self.drawMap();
+      self.getFriends();
+      self.getAttendees();
       console.log('self.host =', self.host);
       console.log('self.meal =', self.meal);
       console.log('self.restaurant =', self.restaurant);
       console.log('self.yelpData =', self.yelpData);
-      self.formatTime();
-      self.drawMap();
-      self.getFriends();
     };
 
     self.drawMap = function() {
@@ -51,6 +52,10 @@
         return acc.concat([current.name]);
       }, []).join(", ");
     };
+
+    self.getAttendees = function() {
+      self.meal.attendees = ["Person1", "Person2"]
+    }
 
 
     self.activate();

@@ -1,5 +1,5 @@
 * {
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
 }
 
 #meal {
@@ -9,10 +9,10 @@
 }
 
 header {
-    height: 450px;
-
-    background: url("https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg") no-repeat center center fixed;
-    background-size: cover;
+    /*height: 450px;*/
+    height: 300px;
+    /*background: url("https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg") no-repeat center center fixed;*/
+    /*background-size: cover;*/
 }
 
 row {
@@ -24,9 +24,9 @@ row {
 .top,
 .other {
     margin-top: 1em;
-    margin-right: 11%;
+    margin-right: 10%;
     margin-bottom: 0;
-    margin-left: 11%;
+    margin-left: 10%;
 }
 
 row column {
@@ -79,7 +79,6 @@ h4 {
     background-attachment: scroll;
     background-position: center center;
     /*background: url("https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg") no-repeat center center scroll;*/
-    background-size: cover;
 }
 
 .button {
@@ -95,7 +94,7 @@ h4 {
 #map {
     position: relative;
 
-    height: 700px;
+    height: 53em;
 }
 
 img.yelp {
@@ -130,7 +129,8 @@ h2.ng-binding {
     text-align: initial;
 }
 
-.yelp-info {
+.yelp-info,
+.attendees {
     text-align: left;
 }
 
@@ -142,4 +142,30 @@ h2.ng-binding {
 
 .titleInfo {
     background-color: #ffffef;
+}
+
+@media (max-width: 987px) {
+    body {
+        font-size: 1.1em;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    h3 {
+        font-size: 1.4 em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
+    column.profile-pic {
+        height: 50em;
+    }
 }
