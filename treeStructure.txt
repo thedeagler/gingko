@@ -1,0 +1,76 @@
+.
+├── Gruntfile.js
+├── Procfile
+├── README.md
+├── bower.json
+├── client
+│   ├── app
+│   │   ├── app.module.js
+│   │   ├── app.routes.js
+│   │   ├── home
+│   │   │   ├── home.controller.js
+│   │   │   ├── home.factory.js
+│   │   │   ├── home.html
+│   │   │   └── location.factory.js
+│   │   ├── meal
+│   │   │   ├── meal.controller.js
+│   │   │   ├── meal.factory.js
+│   │   │   ├── meal.html
+│   │   │   └── sampleMealsOutput.json
+│   │   ├── multibar
+│   │   │   ├── multibar.controller.js
+│   │   │   ├── multibar.factory.js
+│   │   │   └── multibar.html
+│   │   ├── search
+│   │   │   ├── search.controller.js
+│   │   │   ├── search.factory.js
+│   │   │   └── search.html
+│   │   ├── searchResults
+│   │   │   ├── searchResults.controller.js
+│   │   │   └── searchResults.html
+│   │   └── user
+│   │       ├── user.controller.js
+│   │       ├── user.factory.js
+│   │       └── user.html
+│   ├── index.html
+│   └── styles
+│       ├── hero.jpg
+│       ├── home.css
+│       ├── kube-grid.css
+│       ├── meal.css
+│       ├── moment.js
+│       ├── normalize.css
+│       ├── results.css
+│       ├── search.css
+│       ├── star-empty.png
+│       ├── star-half.png
+│       ├── star.png
+│       ├── style.css
+│       └── user.css
+├── package.json
+├── server
+│   ├── routes
+│   │   ├── facebookRouter.js
+│   │   ├── mealsRouter.js
+│   │   ├── userRouter.js
+│   │   └── yelpRouter.js
+│   ├── sample-data
+│   │   ├── sampleBusinessYelpData.js
+│   │   └── sampleSearchYelpData.js
+│   ├── server-config.js
+│   ├── server-spec
+│   │   └── server-specs.js
+│   ├── server.js
+│   ├── services
+│   │   ├── auth.js
+│   │   ├── authKeys-temp.js
+│   │   ├── authKeys.js
+│   │   ├── db.js
+│   │   ├── isLoggedIn.js
+│   │   └── passportStrategies.js
+│   └── utils
+│       ├── formatHandler.js
+│       └── requestHandler.js
+└── treeStructure.txt
+
+180 directories, 783 files

@@ -19,7 +19,6 @@
       distance: [],
     };
 
-
     // Set heights of elements
     var rowHeight = (window.innerHeight - 64)/ 2;
     document.getElementById('hero_container').style.height = rowHeight + "px";
@@ -60,6 +59,10 @@
         homeFactory.getTop(params)
         .then((function(sortBy) {
           return function(data) {
+
+            data.forEach(function(obj) {
+              obj.meal.relativeTime = moment(obj.meal.date).fromNow();
+            });
 
             self.tables[sortBy] = data;
             if(data.length > 0){
