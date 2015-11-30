@@ -8,8 +8,6 @@
 
   function MealCtrl(multibarFactory, $state, $location, $window, $http, mealsData, mealFactory) {
     var self = this;
-    console.log('mealsData =', mealsData);
-    console.log();
 
     self.activate = function() {
       self.host = mealsData.data.host;
@@ -34,12 +32,8 @@
     self.formatTime = function() {
       self.meal.date = new Date(self.meal.date);
       self.host.updatedAt = new Date(self.host.updatedAt);
-      console.log('self.host.updatedAt =', self.host.updatedAt);
       var momentDate = moment(self.meal.date);
       var createdAt = self.host.updatedAt;
-      self.meal.formattedDay = momentDate.format('dddd');
-      self.meal.formattedDate = momentDate.format('MMM Do');
-      self.meal.formattedTime = momentDate.format('h:mm a');
       self.meal.formattedCreatedAt = moment(createdAt).format('MMM Do');
       self.meal.relativeCreatedAt = moment(createdAt).fromNow();
       self.meal.relativeTime = moment(momentDate).fromNow();

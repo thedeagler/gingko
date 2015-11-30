@@ -1,3 +1,6 @@
+<script src="../../styles/moment.js"></script>
+
+
 <div id="home_container" layout="column" ng-cloak>
   <section id="hero_container" layout="row" flex layout-align="center center">
     <div layout="column" layout-align="center center">
@@ -71,7 +74,7 @@
         <div class="foot">
           <img src="{{home.tables.distance[0].host.profilePicture}}" class="profile_picture">
           <div class="feat_container">
-            <h1 class="feature">{{home.tables.date[0].meal.date | date: 'h:mm a'}}</h1>
+            <h1 class="feature">{{home.tables.date[0].meal.relativeTime}}</h1>
           </div>
           <div class="description">
             <p>{{home.tables.date[0].meal.description}}</p>
