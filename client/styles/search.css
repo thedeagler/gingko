@@ -49,6 +49,13 @@ md-datepicker {
   padding: 15px 0 0 0;
 }
 
+.md-datepicker-input-container {
+  /*position: absolute;*/
+  /*bottom: 180px;*/
+  margin: 3px 0 0 0;
+  padding: 15px 0 0 0;
+}
+
 #time-input {
   height: 50px;
   margin:  17px 0 5px 0;
@@ -60,4 +67,6 @@ md-datepicker {
   margin-top: 19px;
 }
 
-
+.item-address {
+  font-weight: 200;
+}

@@ -11,7 +11,6 @@
                 <label>Your Table Name</label>
                 <textarea ng-model="vm.meal.title" columns="1" rows="1"></textarea>
               </md-input-container>
-
               <!-- md autocomplete settings + start -->
               <md-autocomplete
                   md-selected-item="vm.meal.restaurant"
@@ -60,14 +59,6 @@
                   <md-option ng-value="number" ng-repeat="number in vm.attendees">{{ number }}</md-option>
                 </md-select>
               </div>
-    <!--           <div flex="30" ng-init="changeValue = 5">
-              <input type="text" ng-model="commonDatepicker" class="form-control" data-nq-datepicker="" placeholder="datepicker">
-              </div> -->
-
-
-
-              <!-- event desc. -->
-              <!-- <md-divider></md-divider> -->
               <md-input-container>
                 <label>Event Info</label>
                 <textarea style="resize:none" ng-model="vm.meal.description" columns="10" md-maxlength="300" rows="10"></textarea>
