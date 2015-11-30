@@ -3,7 +3,7 @@ var requestHandler = require('./../utils/requestHandler');
 
 module.exports = function(passport, isLoggedIn) {
   var router = express.Router();
-  
+
   // GET all meals
   router.get('/', function(req, res) {
     requestHandler.getMeals()
@@ -42,6 +42,27 @@ module.exports = function(passport, isLoggedIn) {
         console.error(err);
         res.status(404).send(err);
       });
+  });
+
+  // POST with location to get top suggestions
+  router.post('/top', function(req, res) {
+    var params = req.body;
+    /* Example param object
+    params = {
+      sortBy: string,
+      location: object,
+      numResults: number,
+    }
+    */
+
+    requestHandler.getTop(params)
+    .then(function(data) {
+      res.status(200).send(data);
+    })
+    .catch(function(err) {
+      console.error(err);
+      res.status(404).send(err);
+    });
   });
 
   return router;

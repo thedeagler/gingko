@@ -20,16 +20,15 @@
                 md-floating-label="Where do you want to eat? Search Yelp."
                 md-menu-class="autocomplete-search">
               <!-- autocomplete display start -->
-              <span  ng-if="item.name" md-highlight-text="vm.searchText">{{item.name}}</span>
+              <span ng-if="item.name" md-highlight-text="vm.searchText">{{item.name}}</span>
               <md-item-template>
+                <span class="item-rating">
+                  <img ng-repeat="i in item.rating track by $index" ng-src="{{i}}">
+                </span>
                 <span class="item-name">
                   <span><strong> {{item.name}} </strong></span>
                 </span>
-                 <span class="item-name">
-                  <!-- <img ng-repeat="i in item.rating track by $index" ng-src="{{i}}"> -->
-                  <img ng-src="{{item.yelpData.rating_img_url_small}}" style="margin: 0 5px 0 10px">
-                </span>
-                <span>({{item.yelpData.review_count}})</span>
+                <span class="item-address">{{item.display_address[0]}}, {{item.display_address[1]}}</span>
               </md-item-template>
               <md-not-found>
                 <span>Sorry, no resturaunts found! Please try again!</span>
@@ -58,14 +57,8 @@
                 <md-option ng-value="number" ng-repeat="number in vm.attendees">{{ number }}</md-option>
               </md-select>
             </div>
-  <!--           <div flex="30" ng-init="changeValue = 5">
-            <input type="text" ng-model="commonDatepicker" class="form-control" data-nq-datepicker="" placeholder="datepicker">
-            </div> -->
-
-
 
             <!-- event desc. -->
-            <!-- <md-divider></md-divider> -->
             <md-input-container>
               <label>Event Info</label>
               <textarea style="resize:none" ng-model="vm.meal.description" columns="10" md-maxlength="300" rows="10"></textarea>
