@@ -28,8 +28,6 @@
     });
 
     self.init = function(e, v) {
-      console.log('went');
-
       if(!$rootScope.geolocation) {
         locationFactory.getLocation(function (position) {
           $rootScope.geolocation = {
@@ -37,7 +35,6 @@
             lon: position.coords.longitude,
             acc: position.coords.accuracy,
           };
-          console.log('Location Retrieved', $rootScope.geolocation);
           self.getRecs();
         });
       }
@@ -63,8 +60,6 @@
         homeFactory.getTop(params)
         .then((function(sortBy) {
           return function(data) {
-            console.log(sortBy);
-            console.log(data);
 
             self.tables[sortBy] = data;
             if(data.length > 0){
@@ -75,28 +70,10 @@
         .catch(queryFail);
       }
 
-      // function locationFound(position) {
-      //   self.geolocation = {
-      //     lat: position.coords.latitude,
-      //     lon: position.coords.longitude,
-      //     acc: position.coords.accuracy,
-      //   };
-
-      //   params.location = self.geolocation;
-
-      //   // homeFactory.getTop(params)
-      //   // .then(querySuccess)
-      //   // .catch(queryFail);
-      // }
-
-      function querySuccess(data) {
-        console.log('return data', data);
-      }
-
       function queryFail(err) {
-        // console.error('Query Failed',
-        //   err.data.replace(/<br>/g, '\n').replace(/ &nbsp;/g, '>'),
-        //   err);
+        console.error('Query Failed',
+          err.data.replace(/<br>/g, '\n').replace(/ &nbsp;/g, '>'),
+          err);
       }
     };
 

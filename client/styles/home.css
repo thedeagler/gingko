@@ -23,6 +23,7 @@
 
 #hero_container {
   background-color: papayawhip;
+  background-image: url('./hero.jpg');
   -webkit-background-size: cover;
   background-size: cover;
 }
@@ -64,8 +65,8 @@ h3#subtitle {
 }
 
 .head > h3 {
-  background-color: #673ab7;
-  color: white;
+  background-color: white;
+  color: #673ab7;
   font-weight: 200;
   text-align: center;
   padding: 5px;
