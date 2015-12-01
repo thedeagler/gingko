@@ -56,7 +56,7 @@
 
     // TODO: perhaps use URL params '/:username' to grab account details
     .state('user', {
-      url: '/user',
+      url: '/user/:id',
       views: {
         'multibar': {
           templateUrl: 'app/multibar/multibar.html',
@@ -70,7 +70,10 @@
         }
       },
       resolve: {
-        checkUser: ['$http', checkUser]
+        checkUser: ['$http', checkUser],
+        userData: ['$http', '$stateParams', function($http, $stateParams) {
+          return $http({method: 'GET', url: '/user/' + $stateParams.id});
+        }]
       }
     })
 

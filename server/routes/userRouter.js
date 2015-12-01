@@ -5,10 +5,11 @@ module.exports = function(passport, isLoggedIn) {
   var router = express.Router();
 
   // GET a user by id
-  router.get('/user/:id', isLoggedIn, function(req, res) {
-    var facebook_id = req.params.id.slice(1);
+  router.get('/:id', function(req, res) {
+    // console.dir(req);
+    var tablesurfer_id = req.params.id;
 
-    requestHandler.getUser(facebook_id)
+    requestHandler.getUserById(tablesurfer_id)
       .then(function(data) {
         res.status(200).send(data);
       })
@@ -18,6 +19,20 @@ module.exports = function(passport, isLoggedIn) {
       });
   });
 
+
+  router.get('/:id/meals', function(req, res){
+    var tablesurfer_id = req.params.id;
+    requestHandler.getUserMeals(tablesurfer_id)
+    .then(function(data) {
+      res.status(200).send(data);
+    })
+    .catch(function(err) {
+      console.error(err);
+      res.status(404).send(err);
+    });
+  });
   return router;
 
 };
+
+

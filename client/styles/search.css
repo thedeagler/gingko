@@ -21,7 +21,7 @@
 body.ng-scope{
   background-color: #ffffef;
   background: url(http://www.lmt-lss.com/wp-content/uploads/2015/08/HAP212.jpg) no-repeat top left;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 
 .form-container {
@@ -36,9 +36,6 @@ md-content.layout-padding.layout-column {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-* {
-    font-weight: 800;
-}
 
 md-datepicker {
   height: 50px;
@@ -55,7 +52,7 @@ md-datepicker {
   height: 50px;
   margin:  17px 0 5px 0;
   line-height: 15px;
-  font-weight: 100;
+  font-weight: 400;
 }
 
 #num-attendees {
