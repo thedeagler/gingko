@@ -13,8 +13,10 @@
                   </figure>
                 </a>
                 <span class="host">
-                  <md-tooltip md-visible="false" md-direction="top">Your Host: {{result.hostName}}</md-tooltip>
-                  <img src="{{result.hostPicture}}" class="profile_picture" />
+                  <a ng-href="/#/user/{{result.host_id}}">
+                    <md-tooltip md-visible="false" md-direction="top">Your Host: {{result.hostName}}</md-tooltip>
+                    <img src="{{result.hostPicture}}" class="profile_picture" />
+                  </a>
                 </span>
                 <md-grid-tile-footer>
                 <ul>

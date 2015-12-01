@@ -25,7 +25,6 @@
         host_id: meal.host.id
       };
     });
-    console.log(self.meals);
 
     self.renderStars = function(rating) {
       rating *= 2;
