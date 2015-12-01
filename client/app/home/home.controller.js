@@ -66,7 +66,8 @@
 
             self.tables[sortBy] = data;
             if(data.length > 0){
-              document.getElementById(sortBy).style.backgroundImage = "url('"+ data[0].restaurant.yelpData.image_url +"')";
+              var image = data[0].restaurant.yelpData.image_url;
+              document.getElementById(sortBy).style.backgroundImage = "url('"+ image.slice(0, -6) + 'o.jpg' +"')";
             }
           };
         })(sortBy))
@@ -82,6 +83,10 @@
 
     self.goToMeal = function (mealID) {
       $window.location = '/#/meals/' + mealID;
+    };
+
+    self.formatLargeImage = function() {
+
     };
 
     // Initialize tables on page load
