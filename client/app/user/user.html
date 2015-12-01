@@ -1,31 +1,34 @@
 <link rel="stylesheet" href="../../styles/user.css">
-<div id="user" layout="column" flex="50">
-  <!-- in order to use the self properties, you must specify controller as a variable   -->
-  <div class='main-container'>
-    <md-card>
-      <md-contents>
-      <img ng-src="{{user.user.facebookImg}}" class="md-card-image">
-      <div class="user-details" ng-model="user.user" layout="column">
-        <li class="username">{{user.user.name}}</li>
-        <div class="stars" ng-init="starview = 'host'">
-          <img class="star" ng-repeat="i in user.user.hostrating track by $index" ng-src="{{i}}" ng-show="starview === 'host'">
-          <img class="star" ng-repeat="i in user.user.guestrating track by $index" ng-src="{{i}}" ng-show="starview === 'guest'">
-          <span ng-show="starview === 'host'">({{user.user.numhostratings}})</span>
-          <span ng-show="starview === 'guest'">({{user.user.numguestratings}})</span>
-          <span class="toggle-rating" ng-click="starview = 'host'" ng-class="{ 'active': starview === 'host' }">host</span><span> | </span><span class="toggle-rating"  ng-click="starview = 'guest'" ng-class="{ 'active': starview === 'guest' }">guest</span></span>
+<div class='main-container' flex layout="row">
+  <div id="user" layout="column" flex="30">
+    <!-- in order to use the self properties, you must specify controller as a variable   -->
+      <md-card class="md-primary">
+        <md-contents>
+        <img ng-src="{{user.facebookImg}}" class="md-card-image">
+        <div class="user-details" ng-model="user" layout="column">
+          <li class="username">{{user.firstName}} {{user.lastName}}</li>
+          <div class="stars" ng-init="starview = 'host'">
+            <img class="star" ng-repeat="i in user.hostrating track by $index" ng-src="{{i}}" ng-show="starview === 'host'">
+            <img class="star" ng-repeat="i in user.guestrating track by $index" ng-src="{{i}}" ng-show="starview === 'guest'">
+            <span ng-show="starview === 'host'">({{user.numhostratings}})</span>
+            <span ng-show="starview === 'guest'">({{user.numguestratings}})</span>
+            <span class="toggle-rating" ng-click="starview = 'host'" ng-class="{ 'active': starview === 'host' }">host</span><span> | </span><span class="toggle-rating"  ng-click="starview = 'guest'" ng-class="{ 'active': starview === 'guest' }">guest</span></span>
+          </div>
+          <ul>
+            <li class="line-items"><strong>Email: </strong>{{user.email}}</li>
+          </ul>
         </div>
-        <ul>
-          <li class="line-items"><strong>Job: </strong>"{{user.user.job}}"</li>
-          <li class="line-items"><strong>Hobbies: </strong>{{user.user.hobbies}}</li>
-          <li class="line-items"><strong>Favorite Eatery: </strong>{{user.user.favorite_eatery}}</li>
-          <li class="line-items"><strong>Aspirations: </strong>{{user.user.aspirations}}</li>
-        </ul>
+        </md-contents>
+      </md-card>
+    </div>
+    <div id="events" flex="70" layout="column">
+      <div>
+        <h1>Upcoming Events</h1>
       </div>
-      </md-contents>
-    </md-card>
-  </div>
-
-
+      <ul>
+        <li ng-repeat="event in user.events"></li>
+      </ul>
+    </div>
 </div>
 
 <!-- <div flex="50" layout="column">

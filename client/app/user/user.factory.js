@@ -19,17 +19,6 @@
 
 
     function getUserInfo(cb) {
-      // var path = '/api/in/users';
-      // console.log('Getting users from DB, path is: ', path + $location.path());
-      // return $http({
-      //   url: path + $location.path(),
-      //   method: 'GET'
-      // })
-      // .then(function(response) {
-      //   console.log('Get users data is here, resp.data: ', response.data);
-      //   cb(response.data);
-      // window.
-      // });
 
       //dummy data:
       cb({
@@ -41,10 +30,14 @@
         guestrating: 5,
         numguestratings: 23,
         hobbies: "Giving pro tips.",
-        // favorite_eatery: 'Sarku @ The Westfield',
+        favorite_eatery: 'Sarku @ The Westfield',
         aspirations: "President of 'murica",
         contact_info: 'kylecho@gmail.com'
       });
+    }
+
+    function getUserEvents() {
+      
     }
 
     // get Facebook data from api/in/user:id, based on the window url

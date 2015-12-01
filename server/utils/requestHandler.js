@@ -203,7 +203,6 @@ exports.addMeal = function(req) {
               USER ROUTES
 *****************************************/
 
-// GET TO /user/:id
 exports.getUser = function(facebook_id) {
   return db.Users.find({
       where: { facebookId: facebook_id }
@@ -212,3 +211,26 @@ exports.getUser = function(facebook_id) {
       return user;
     });
 };
+
+// GET TO /user/:id
+exports.getUserById = function(id) {
+  return db.Users.find({
+      where: { id: id }
+    })
+    .then(function(user) {
+      console.log(user);
+      return user;
+    });
+};
+
+
+// exports.getUserMeals = function(id) {
+//   return db.Meals.findAll({
+//     include: [db.Users, db.Restaurants], 
+//     where: {user.id: id}
+//   })
+//   .then(function (meals) {
+//     var o = utils.formatMeals(meals);
+//     return o;
+//   });
+// };
