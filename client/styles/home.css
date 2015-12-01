@@ -23,7 +23,9 @@
 
 #hero_container {
   background-color: papayawhip;
-  background-image: url('./hero.jpg');
+  /*background-image: url('./hero.jpg');*/
+  background-image: url('http://sprudgelive.com/wp-content/uploads/2015/06/Jervis-Tan-Singapore-Kingsman-024.jpg');
+  background-position: 0 -2em;
   -webkit-background-size: cover;
   background-size: cover;
 }

@@ -21,6 +21,7 @@
       }).join(" ");
       self.meal.description = _.capitalize(self.meal.description.replace('"', ''));
       self.attendees = mealsData.data.attendees;
+      self.yelpData.image_url = self.yelpData.image_url.slice(0, self.yelpData.image_url.length - 7) + '/o.jpg';
 
       self.formatTime();
       self.drawMap();
@@ -45,7 +46,8 @@
                 return _.capitalize(item);
               }).join(" "),
               address: otherMeal.restaurant.yelpData.location.display_address.join(', '),
-              yelpData: otherMeal.restaurant.yelpData
+              yelpData: otherMeal.restaurant.yelpData,
+              image_url: otherMeal.restaurant.yelpData.image_url.slice(0, otherMeal.restaurant.yelpData.image_url.length - 6) + '348s.jpg'
             };
           });
         })
@@ -78,12 +80,13 @@
 
     self.joinMeal = function() {
       mealFactory.joinMeal(self.mealId)
-      .then(function (data) {
-        self.joinedSuccessfully = true;
-      })
-      .error(function(err) {
-        console.log("Error in joining.")
-      })
+        .then(function(data) {
+          self.joinedSuccessfully = true;
+        })
+        .error(function(err) {
+          console.log("Error in joining.")
+        });
+      window.location.reload();
     };
 
 
