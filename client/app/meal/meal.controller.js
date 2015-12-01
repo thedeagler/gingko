@@ -86,7 +86,6 @@
         .error(function(err) {
           console.log("Error in joining.")
         });
-      window.location.reload();
     };
 
 
