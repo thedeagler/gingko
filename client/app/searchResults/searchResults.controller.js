@@ -14,7 +14,10 @@
       return {
         id: ++i,
         address: meal.restaurant.yelpData.location.display_address.join(', '),
-        yelpData: meal.restaurant.yelpData
+        yelpData: meal.restaurant.yelpData,
+        hostName: meal.host.username,
+        hostPicture: meal.host.profilePicture,
+        host_id: meal.host.id
       };
     });
 

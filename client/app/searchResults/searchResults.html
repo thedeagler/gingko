@@ -12,6 +12,10 @@
                     <img ng-src="{{result.yelpData.image_url}}" width="100%" height="100%">
                   </figure>
                 </a>
+                <span class="host">
+                  <md-tooltip md-visible="false" md-direction="top">Your Host: {{result.hostName}}</md-tooltip>
+                  <img src="{{result.hostPicture}}" class="profile_picture" />
+                </span>
                 <md-grid-tile-footer>
                 <ul>
                   <li class="name">{{ result.yelpData.name }}</li>
