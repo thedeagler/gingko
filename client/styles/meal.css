@@ -16,6 +16,7 @@
 
 header {
     height: 300px;
+
     background: #ffffef;
 }
 
@@ -43,12 +44,11 @@ row {
 }
 
 row column {
-    margin-right: 0.8em;
-    margin-left: 0.8em;
-    margin-bottom: 0.3em;
     margin-top: 0.3em;
+    margin-right: 0.8em;
+    margin-bottom: 0.3em;
+    margin-left: 0.8em;
 }
-
 
 a {
     text-decoration: none;
@@ -102,6 +102,7 @@ h4 {
 
 .profile-pic {
     height: 20em;
+
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -157,10 +158,11 @@ h2.ng-binding {
 }
 
 .attendee-picture {
+    height: 7em;
+
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
-    height: 7em;
 }
 
 .yelp-info,
