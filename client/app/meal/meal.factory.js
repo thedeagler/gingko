@@ -24,6 +24,9 @@
         .then(function(response) {
           console.log("successfully posted!", response.data);
           return response.data;
+        })
+        .error(function(err){
+          console.log("Error in posting.");
         });
     }
 

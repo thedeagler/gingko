@@ -101,17 +101,14 @@
 
         <!-- Who's Attending Information row -->
         <h1>Who's Attending</h1>
-        <row class="attendees" ng-repeat="friend in meal.meal.attendees">
+        <row class="attendees" ng-repeat="friend in meal.attendees">
           <!-- attendees table -->
-
-
-          <column cols="12" class="attendees-info">
+          <column cols="2" class="single-attendee">
+            <p>{{friend.username}}</p>
             <row>
-              <column cols="5" class="attr">PHOTO</column>
-              <column cols="7" class="ans">{{friend}}</column>
-            </row>
+              <column cols="12" class="attendee-picture" style="background: url({{friend.profilePicture}}) no-repeat top scroll; background-size: cover; height:8em;">
+              </column>
           </column>
-
         </row>
 
 

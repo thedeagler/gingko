@@ -9,26 +9,22 @@
   function MealCtrl(multibarFactory, $state, $location, $window, $http, mealsData, mealFactory) {
     var self = this;
 
-    self.joinMeal = function() {
-      mealFactory.joinMeal(self.mealId);
-    };
-
     self.activate = function() {
       self.host = mealsData.data.host;
       self.host.gender = _.capitalize(self.host.gender);
       self.meal = mealsData.data.meal;
       self.restaurant = mealsData.data.restaurant;
       self.yelpData = mealsData.data.restaurant.yelpData;
+      self.mealId = mealsData.data.meal.id;
       self.meal.title = self.meal.title.split(" ").map(function(item) {
         return _.capitalize(item);
       }).join(" ");
       self.meal.description = _.capitalize(self.meal.description.replace('"', ''));
-      self.mealId = mealsData.data.meal.id;
+      self.attendees = mealsData.data.attendees;
 
       self.formatTime();
       self.drawMap();
       self.getFriends();
-      self.getAttendees();
       self.getOtherMeals();
 
       console.log('self.host =', self.host);
@@ -80,8 +76,14 @@
       }, []).join(", ");
     };
 
-    self.getAttendees = function() {
-      self.meal.attendees = ["Person1", "Person2"];
+    self.joinMeal = function() {
+      mealFactory.joinMeal(self.mealId)
+      .then(function (data) {
+        self.joinedSuccessfully = true;
+      })
+      .error(function(err) {
+        console.log("Error in joining.")
+      })
     };
 
 
