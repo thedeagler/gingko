@@ -101,17 +101,14 @@
 
         <!-- Who's Attending Information row -->
         <h1>Who's Attending</h1>
-        <row class="attendees" ng-repeat="friend in meal.meal.attendees">
+        <row class="attendees" ng-repeat="friend in meal.attendees">
           <!-- attendees table -->
-
-
-          <column cols="12" class="attendees-info">
+          <column cols="2" class="single-attendee">
+            <p>{{friend.username}}</p>
             <row>
-              <column cols="5" class="attr">PHOTO</column>
-              <column cols="7" class="ans">{{friend}}</column>
-            </row>
+              <column cols="12" class="attendee-picture" style="background: url({{friend.profilePicture}}) no-repeat top scroll; background-size: cover; height:8em;">
+              </column>
           </column>
-
         </row>
 
 
@@ -165,25 +162,27 @@
   <!-- Spacing  -->
   <row style="height:100px;"></row>
 
-  <!-- Other Events - TODO -->
-  <h1>Other Events You May Enjoy</h1>
-  <row class="other">
-    <column cols="4" class="rest">
-      <h2>Restaurant1</h2>
-    </column>
-    <column cols="4" class="rest">
-      <h2>Restaurant2</h2>
-    </column>
-    <column cols="4" class="rest">
-      <h2>Restaurant3</h2>
-    </column>
-    <column cols="4" class="rest">
-      <h2>Restaurant4</h2>
-    </column>
-    <column cols="4" class="rest">
-      <h2>Restaurant1</h2>
-    </column>
-  </row>
+  <!-- Other Events You May Enjoy -->
+    <h1>Other Events You May Enjoy</h1>
+    <row class="other">
+      <column cols="4" class="rest" ng-repeat="result in meal.otherMeals | limitTo:4">
+        <a ng-href="/#/meals/{{result.id}}">
+        <h2>{{result.title}}</h2>
+        <figure>
+          <img ng-src="{{result.yelpData.image_url}}" width="100%" height="100%">
+        </figure>
+        <h2>{{result.yelpData.name}}</h2>
+          <p>{{ result.address }}</br>
+          {{result.yelpData.review_count}} reviews</br></p>
+          <span class="desc"><img class="yelp" src="{{result.yelpData.rating_img_url}}" alt="yelp-rating"></span>
+          </a>
+      </column>
+    </row>
+
+
+    <!-- Spacing  -->
+    <row style="height:100px;"></row>
+
 
 
 </div>

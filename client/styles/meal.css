@@ -1,9 +1,11 @@
 * {
-    /*border: 1px solid transparent;*/
+    /*border: 1px solid red;*/
 }
 
-[ng\:cloak], [ng-cloak], .ng-cloak {
-  display: none !important;
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+    display: none !important;
 }
 
 #meal {
@@ -13,15 +15,17 @@
 }
 
 header {
-    /*height: 450px;*/
     height: 300px;
-    background: url("https://farm8.staticflickr.com/7322/14126674153_7b79b9c3c3_b.jpg") no-repeat center center fixed;
-    /*background-size: cover;*/
+    background: #ffffef;
 }
 
 row {
     margin-top: 0em;
-    margin-bottom: 1em;
+    margin-bottom: 0.3em;
+}
+
+.single-attendee p {
+    text-align: center;
 }
 
 .main,
@@ -33,9 +37,29 @@ row {
     margin-left: 10%;
 }
 
+.other {
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
 row column {
     margin-right: 0.8em;
-    margin-bottom: 0;
+    margin-left: 0.8em;
+    margin-bottom: 0.3em;
+    margin-top: 0.3em;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+a h2 {
+    text-decoration: normal;
+}
+
+a p {
+    color: black;
 }
 
 h1,
@@ -78,7 +102,6 @@ h4 {
 
 .profile-pic {
     height: 20em;
-
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -98,7 +121,7 @@ h4 {
 #map {
     position: relative;
 
-    height: 48em;
+    height: 54em;
 }
 
 img.yelp {
@@ -133,6 +156,13 @@ h2.ng-binding {
     text-align: initial;
 }
 
+.attendee-picture {
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    height: 7em;
+}
+
 .yelp-info,
 .attendees {
     text-align: left;
@@ -149,26 +179,6 @@ h2.ng-binding {
 }
 
 @media (max-width: 987px) {
-/*    body {
-        font-size: 1.1em;
-    }
-
-    h1 {
-        font-size: 1.8em;
-    }
-
-    h2 {
-        font-size: 1.6em;
-    }
-
-    h3 {
-        font-size: 1.4 em;
-    }
-
-    h4 {
-        font-size: 1.2em;
-    }*/
-
     column.profile-pic {
         height: 50em;
     }
