@@ -44,6 +44,21 @@ module.exports = function(passport, isLoggedIn) {
       });
   });
 
+  // PUT to join a meal in the db
+  router.put('/:id', function(req, res) {
+    var meal_id = req.params.id;
+    var facebook_id = req.user.id;
+
+    requestHandler.joinMeal(meal_id, facebook_id)
+      .then(function(data) {
+        res.status(200).send(data);
+      })
+      .catch(function(err) {
+        console.error(err);
+        res.status(404).send(err);
+      });
+  });
+
   // POST with location to get top suggestions
   router.post('/top', function(req, res) {
     var params = req.body;

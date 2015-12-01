@@ -9,11 +9,16 @@
   function MealCtrl(multibarFactory, $state, $location, $window, $http, mealsData, mealFactory) {
     var self = this;
 
+    self.joinMeal = function() {
+      mealFactory.joinMeal(self.mealId);
+    };
+
     self.activate = function() {
       self.host = mealsData.data.host;
       self.meal = mealsData.data.meal;
       self.restaurant = mealsData.data.restaurant;
       self.yelpData = mealsData.data.restaurant.yelpData;
+      self.mealId = mealsData.data.meal.id;
 
       self.formatTime();
       self.drawMap();
