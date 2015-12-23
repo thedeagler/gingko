@@ -54,7 +54,6 @@
       }
     })
 
-    // TODO: perhaps use URL params '/:username' to grab account details
     .state('user', {
       url: '/user/:id',
       views: {
@@ -120,6 +119,6 @@
           return $http({method: 'GET', url: '/meals'});
         }
       }
-    }); // TODO: remove above semicolon to add more routes
+    });
   }
 })();

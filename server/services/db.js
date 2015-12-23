@@ -101,14 +101,6 @@ var Restaurants = db.define("Restaurants", {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  // lat: {
-  //   type: Sequelize.DOUBLE,
-  //   allowNull: false
-  // },
-  // lon: {
-  //   type: Sequelize.DOUBLE,
-  //   allowNull: false
-  // },
   yelpData: {
     type: Sequelize.JSON,
     allowNull: false
