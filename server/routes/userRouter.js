@@ -6,7 +6,6 @@ module.exports = function(passport, isLoggedIn) {
 
   // GET a user by id
   router.get('/:id', function(req, res) {
-    // console.dir(req);
     var tablesurfer_id = req.params.id;
 
     requestHandler.getUserById(tablesurfer_id)

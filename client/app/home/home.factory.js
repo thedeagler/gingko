@@ -10,7 +10,6 @@
     var services = {
       getTop : getTop,
     };
-
     return services;
 
     function getTop(params) {

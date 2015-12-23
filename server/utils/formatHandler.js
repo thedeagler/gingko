@@ -17,7 +17,7 @@ exports.formatMeal = function(meal, attendeesData) {
     restaurant: meal.Restaurant.dataValues,
     host: meal.User.dataValues
   };
-  
+
   if (attendeesData) {
     var attendees = attendeesData.map(function(attendee) {
       return attendee.dataValues;
@@ -43,8 +43,6 @@ exports.formatRestaurant = function(restaurant) {
   var o = {
     name: restaurant.name,
     contact: restaurant.phone,
-    // lat: restaurant.coordinate.lat,
-    // lon: restaurant.coordinate.lng,
     rating: restaurant.yelpData.rating,
     numRates: restaurant.yelpData.review_count,
     yelpData: restaurant.yelpData

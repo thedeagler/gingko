@@ -81,9 +81,8 @@ exports.getMeals = function() {
 
 // POST to /meals/top
 exports.getTop = function(params) {
+  // Get soonest results
   if(params.sortBy === 'date') {
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sort by date!!!!!!!!!!!!!!!!!');
-
     return db.Meals.findAll({
       include: [db.Users, db.Restaurants],
       limit: params.numResults,
@@ -98,9 +97,8 @@ exports.getTop = function(params) {
       return utils.formatMeals(meals);
     });
   }
+  // Get top rated results
   else if(params.sortBy === 'rating') {
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sort by rating!!!!!!!!!!!!!!!!!');
-
     return db.Meals.findAll({
       include: [db.Restaurants, db.Users],
       limit: params.numResults,
@@ -116,6 +114,7 @@ exports.getTop = function(params) {
     });
   }
   // TODO: DOESN'T ACTUALLY GET BY DISTANCE RIGHT NOW
+  // Get closest results
   else if(params.sortBy === 'distance' && params.location) {
     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sort by distance!!!!!!!!!!!!!!!!!');
 
@@ -128,44 +127,11 @@ exports.getTop = function(params) {
           $gt: new Date().toString(),
         },
       },
-      // where: {
-      //   // Lat and lon within 5 miles
-      //   $and: {
-      //     db.Restaurants.lat: {
-      //       $between: [params.location.lat]
-      //     }
-      //   },
-      // },
     })
     .then(function (meals) {
       return utils.formatMeals(meals);
     });
-    // // Find sort by distance in miles
-    // db.Meals.query("SELECT latitude, longitude, SQRT(\
-    //     POW(69.1 * (latitude - " + location.lat + "), 2) +\
-    //     POW(69.1 * (" + location.lon + " - longitude) * COS(latitude / 57.3), 2)) AS distance\
-    //     FROM locations\
-    //     WHERE SQRT(\
-    //     POW(69.1 * (latitude - 31.8679), 2) +\
-    //     POW(69.1 * (-116.6567 - longitude) * COS(latitude / 57.3), 2)) < 1\
-    //     ORDER BY distance");
   }
-
-  // } else if(params.sortBy === 'rating') {
-
-  // } else if(params.location) {
-  //   // Find sort by distance in miles
-  //   db.Meals.query("SELECT latitude, longitude, SQRT(\
-  //       POW(69.1 * (latitude - " + location.lat + "), 2) +\
-  //       POW(69.1 * (" + location.lon + " - longitude) * COS(latitude / 57.3), 2)) AS distance\
-  //       FROM locations\
-  //       WHERE SQRT(\
-  //       POW(69.1 * (latitude - 31.8679), 2) +\
-  //       POW(69.1 * (-116.6567 - longitude) * COS(latitude / 57.3), 2)) < 1\
-  //       ORDER BY distance");
-  // } else {
-
-  // }
 };
 
 // POST to /meals
@@ -222,15 +188,3 @@ exports.getUserById = function(id) {
       return user;
     });
 };
-
-
-// exports.getUserMeals = function(id) {
-//   return db.Meals.findAll({
-//     include: [db.Users, db.Restaurants], 
-//     where: {user.id: id}
-//   })
-//   .then(function (meals) {
-//     var o = utils.formatMeals(meals);
-//     return o;
-//   });
-// };

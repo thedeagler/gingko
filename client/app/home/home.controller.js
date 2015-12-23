@@ -1,5 +1,4 @@
-// TODO: Connect meals to real meals
-//       Make rotating meals
+// TODO: Make rotating meals
 
 (function() {
   'use strict';
@@ -7,7 +6,6 @@
   angular.module('app')
   .controller('HomeCtrl', HomeCtrl);
 
-  // if factories are needed, inject here
   HomeCtrl.$inject = ['$rootScope', 'homeFactory', '$state', "$location", "$window", 'locationFactory'];
 
   function HomeCtrl($rootScope, homeFactory, $state, $location, $window, locationFactory) {
@@ -42,7 +40,7 @@
       }
     };
 
-    // TODO: Get closest, highest rated, and soonest available meals instead of all of them
+    // Get closest, highest rated, and soonest available meals instead of all of them
     self.getRecs = function() {
       for(var sortBy in self.tables) {
         var params = {
