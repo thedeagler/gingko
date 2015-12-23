@@ -1,4 +1,3 @@
-// Placeholder for any sort of search factory
 (function() {
   'use strict';
 

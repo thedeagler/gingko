@@ -83,6 +83,7 @@ exports.getMeals = function() {
 exports.getTop = function(params) {
   // Get soonest results
   if(params.sortBy === 'date') {
+
     return db.Meals.findAll({
       include: [db.Users, db.Restaurants],
       limit: params.numResults,
@@ -99,6 +100,7 @@ exports.getTop = function(params) {
   }
   // Get top rated results
   else if(params.sortBy === 'rating') {
+
     return db.Meals.findAll({
       include: [db.Restaurants, db.Users],
       limit: params.numResults,
@@ -116,7 +118,6 @@ exports.getTop = function(params) {
   // TODO: DOESN'T ACTUALLY GET BY DISTANCE RIGHT NOW
   // Get closest results
   else if(params.sortBy === 'distance' && params.location) {
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sort by distance!!!!!!!!!!!!!!!!!');
 
     return db.Meals.findAll({
       include: [db.Restaurants, db.Users],
