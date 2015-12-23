@@ -4,7 +4,6 @@
   angular.module('app')
   .controller('SearchResultsCtrl', SearchResultsCtrl);
 
-  // if factories are needed, inject here
   SearchResultsCtrl.$inject = ['multibarFactory','$state', "$location", "$window", "$http", 'mealsData'];
 
   function SearchResultsCtrl(multibarFactory, $state, $location, $window, $http, mealsData) {
