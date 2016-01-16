@@ -16,6 +16,25 @@
     $urlRouterProvider.otherwise('home');
 
     $stateProvider
+    .state('new_home', {
+      url: '/newhome',
+      views: {
+        'multibar': {
+          templateUrl: 'app/multibar/multibar.html',
+          controller: 'MultibarCtrl',
+          controllerAs: 'multibar'
+        },
+        '@': {
+          templateUrl: 'app/new_home/home.html',
+          controller: 'HomeCtrl',
+          controllerAs: 'home',
+        }
+      },
+      resolve: {
+        checkUser: ['$http', checkUser]
+      }
+    })
+
     .state('home', {
       url: '/home',
       views: {

@@ -90,7 +90,7 @@ exports.getTop = function(params) {
       order: [['date', 'ASC']],
       where: {
         date: {
-          $gt: new Date().toString(),
+          $gt: new Date().toISOString(),
         },
       },
     })
@@ -107,7 +107,7 @@ exports.getTop = function(params) {
       order: [[db.Restaurants, 'rating', 'DESC']],
       where: {
         date: {
-          $gt: new Date().toString(),
+          $gt: new Date().toISOString(),
         },
       },
     })
@@ -125,7 +125,7 @@ exports.getTop = function(params) {
       order: [[db.Restaurants, 'rating', 'DESC']],
       where: {
         date: {
-          $gt: new Date().toString(),
+          $gt: new Date().toISOString(),
         },
       },
     })
