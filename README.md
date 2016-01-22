@@ -3,14 +3,12 @@
 ## Team
 
 * **Product Owner**
-  * [David Tsai](https://github.com/tsaiDavid)
+  * [Michelle Lee](https://github.com/mi-lee)
 * **Scrum Master**
-  * [Bjarke Staun](https://github.com/bjarkestaun)
+  * [Stephen Wu](https://github.com/thedeagler)
 * **Development Team**
-  * [Anna Rogers](https://github.com/muddybarefeet)
-  * [Aaron Ackerman](https://github.com/aackerman050)
-  * [Bjarke Staun](https://github.com/bjarkestaun)
-  * [David Tsai](https://github.com/tsaiDavid)
+  * [Clayton Schneider](https://github.com/claytonschneider)
+  * [Mitchell Wilcox](https://github.com/j3tman)
 
 ## Tech Overview
 
@@ -35,23 +33,29 @@ Simplified overview of project's tech stack:
 Simplified overview of project's file structure is laid out below:
 
 ```
-client
-  --- app
-    // angular (views, services, etc)
-  --- assets
-    // client-side assets (ex: img)
-  --- lib
-    // bower components
-  --- styles
-    // stylesheets
-  --- index.html
+├── client
+│   ├── app
+│   │   ├── app.module.js
+│   │   ├── app.routes.js
+│   │   ├── home
+│   │   ├── meal
+│   │   ├── multibar
+│   │   ├── search
+│   │   ├── searchResults
+│   │   └── user
+│   ├── index.html
+│   └── styles
+├── server
+│   ├── routes
+│   ├── sample-data
+│   ├── server-config.js
+│   ├── server-spec
+│   ├── server.js
+│   ├── services
+│   └── utils
 
-server
-  --- routes
-  --- server-spec
-  --- server-config.js
-  --- server.js
 ```
+180 directories, 783 files
 
 ## Style
 

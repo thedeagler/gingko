@@ -1,19 +1,63 @@
-<div id="user" ng-controller='UserCtrl as user' layout="column">
-<!-- in order to use the self properties, you must specify controller as a variable   -->
-  <span>
-    <h3>Your Account Details</h3>
-  </span>
-  <md-card layout="row">
-    <img class="headshot" src="https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg" alt="" layout="column">
-    <div class="user-details" layout="column">
+<link rel="stylesheet" href="../../styles/user.css">
+<div class='main-container' flex layout="row">
+  <div id="user" layout="column" flex="30">
+    <!-- in order to use the self properties, you must specify controller as a variable   -->
+      <md-card class="md-primary">
+        <md-contents>
+        <img ng-src="{{user.facebookImg}}" class="md-card-image">
+        <div class="user-details" ng-model="user" layout="column">
+          <li class="username">{{user.firstName}} {{user.lastName}}</li>
+          <div class="stars" ng-init="starview = 'host'">
+            <img class="star" ng-repeat="i in user.hostrating track by $index" ng-src="{{i}}" ng-show="starview === 'host'">
+            <img class="star" ng-repeat="i in user.guestrating track by $index" ng-src="{{i}}" ng-show="starview === 'guest'">
+            <span ng-show="starview === 'host'">({{user.numhostratings}})</span>
+            <span ng-show="starview === 'guest'">({{user.numguestratings}})</span>
+            <span class="toggle-rating" ng-click="starview = 'host'" ng-class="{ 'active': starview === 'host' }">host</span><span> | </span><span class="toggle-rating"  ng-click="starview = 'guest'" ng-class="{ 'active': starview === 'guest' }">guest</span></span>
+          </div>
+          <ul>
+            <li class="line-items"><strong>Email: </strong>{{user.email}}</li>
+          </ul>
+        </div>
+        </md-contents>
+      </md-card>
+    </div>
+    <div id="events" flex="70" layout="column">
+      <div>
+        <h1>Upcoming Events</h1>
+      </div>
       <ul>
-        <li class="line-items"><strong>Name: </strong>Kyle Cho</li>
-        <li class="line-items"><strong>Job: </strong>Software Engineer</li>
-        <li class="line-items"><strong>Hobbies: </strong>Giving pro tips.</li>
-        <li class="line-items"><strong>Favorite Eatery: </strong>Sarku @ The Westfield</li>
-        <li class="line-items"><strong>Aspirations: </strong>President of 'murica</li>
+        <li ng-repeat="event in user.events"></li>
       </ul>
     </div>
-  </md-card>
-
 </div>
+
+<!-- <div flex="50" layout="column">
+  <md-card>
+    <md-card-header>
+      <md-card-avatar>
+        <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+      </md-card-avatar>
+      <md-card-header-text>
+        <span class="md-title">Title</span>
+        <span class="md-subhead">subhead</span>
+      </md-card-header-text>
+    </md-card-header>
+    <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">In-card actions</span>
+        <span class="md-subhead">Description</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="start center">
+      <md-button>Action 1</md-button>
+      <md-button>Action 2</md-button>
+    </md-card-actions>
+    <md-card-content>
+      <p>
+        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+      </p>
+    </md-card-content>
+  </md-card>
+</div> -->

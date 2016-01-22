@@ -1,3 +1,8 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: gainsboro;
+}
+
 #user, #home, #meal {
   padding-top: 20px;
   text-align: center;
@@ -34,6 +39,8 @@
   max-height: 10px;
 }
 
-.map, #map {
-  position: relative;
+
+
+a:hover {
+  background-color: papayawhip;
 }

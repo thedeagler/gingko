@@ -1,0 +1,78 @@
+
+.headshot {
+  margin: 15px 0 10px 5px;
+}
+
+#user {
+ background-color:papayawhip;
+  position: relative;
+  padding: 0;
+
+}
+
+.main-container {
+  background-color: white;
+  width: 100%;
+  margin: auto;
+}
+
+.md-card-image {
+  width: 90%;
+  text-align: center;
+  margin: 1em auto;
+/*   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);*/
+}
+
+li {
+  list-style-type: none;
+}
+
+.md-card {
+  /*width: 90%;*/
+  
+}
+.username {
+  font-size: 40px;
+  font-weight: 700;
+  font-family: "Noto Sans";
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-align: left;
+  padding-left: 10px;
+  position: absolute;
+  bottom: 150px;
+}
+
+.item-name {
+  display: inline;
+  float:left;
+};
+
+.stars {
+}
+
+
+.star {
+  height:16px;
+  width: 16px;
+  display: inline;
+}
+
+.toggle-rating {
+  text-decoration: underline;
+  color: blue;
+}
+
+.stars {
+  margin-left: 30px;
+  padding-left: 50px;
+}
+
+.active {
+  font-weight: 700;
+  font-size: 20px;
+  /*border: 2px solid gray;*/
+}

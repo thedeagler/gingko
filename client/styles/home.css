@@ -1,0 +1,136 @@
+/*
+  Allow angular.js to be loaded in body, hiding cloaked elements until
+  templates compile.  The !important is important given that there may be
+  other selectors that are more specific or come later and might alter display.
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.multibar-input {
+  background-color: white;
+}
+
+#home_container {
+  width:100%;
+}
+
+/*
+==============================
+    Hero
+==============================
+ */
+
+#hero_container {
+  background-color: papayawhip;
+  /*background-image: url('./hero.jpg');*/
+  background-image: url('http://sprudgelive.com/wp-content/uploads/2015/06/Jervis-Tan-Singapore-Kingsman-024.jpg');
+  background-position: 0 -2em;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+h1#title {
+  color: white;
+  font-size: 100px;
+  font-weight: 900;
+  margin: 0;
+}
+
+h3#subtitle {
+  color: white;
+  font-size: 25px;
+  font-weight: 200;
+  margin: 0;
+}
+
+.md-button.hungry {
+  width: 70%;
+}
+
+
+/*
+==============================
+    Suggestion Cards
+==============================
+ */
+
+#cards_container {
+  width: 100%;
+}
+
+.card {
+  background-color: #673ab7;
+  position: relative;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.head > h3 {
+  background-color: white;
+  color: #673ab7;
+  font-weight: 200;
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+}
+
+.card > div > h1 {
+  background-color: #673ab7;
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+/*
+==============================
+    Card Footer
+==============================
+ */
+
+.foot {
+  width:100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.profile_picture {
+  /*position: relative;*/
+  display: inline;
+  width: 100px;
+  border: 5px solid #673ab7;
+  border-radius: 55px;
+  float: left;
+  clear: both;
+  overflow: hidden;
+}
+
+.feat_container {
+  text-align: right;
+}
+
+.feature {
+  background-color: #673ab7;
+  color: white;
+  display: inline-block;
+  padding: 5px;
+  margin: 0;
+  right: 0;
+}
+
+.description {
+  display: block;
+  color: white;
+  margin-bottom: 0;
+}
+
+.description > p {
+  background-color: #673ab7;
+  margin: 0px;
+  height: 60px;
+  width: 100%;
+}
+
+.card:hover {
+  opacity: 0.95;
+}

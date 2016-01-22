@@ -1,0 +1,17 @@
+/*.multibar-input {
+  background-color: white;
+}
+
+*/
+
+#logo {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0;
+  text-align: center;
+  border-bottom: solid 2px #38266a;
+}
+
+strong {
+  font-weight: 800;
+}

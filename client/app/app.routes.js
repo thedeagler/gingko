@@ -9,32 +9,149 @@
   config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function config($stateProvider, $urlRouterProvider) {
+    var checkUser = function($http) {
+      return $http({method: 'GET', url: '/auth/checkuser'});
+    };
+
     $urlRouterProvider.otherwise('home');
 
     $stateProvider
-      .state('home', {
-        url: '/home',
-        templateUrl: 'app/home/home.html',
-        controller: 'HomeCtrl'
-      })
-      .state('search', {
-        url: '/search',
-        templateUrl: 'app/search/search.html',
-        controller: 'SearchCtrl'
-      })
-      // TODO: perhaps use URL params '/:username' to grab account details
-      .state('user', {
-        url: '/user',
-        templateUrl: 'app/user/user.html',
-        controller: 'UserCtrl'
-      })
-      // When you're linked to a unique id in a meal, we render the page
-      .state('meal', {
-        url: '/meals/:id',
-        templateUrl: 'app/meal/meal.html',
-        controller: 'MealCtrl'
-      });
-      // TODO: remove above semicolon to add more routes
-  }
+    .state('new_home', {
+      url: '/newhome',
+      views: {
+        'multibar': {
+          templateUrl: 'app/multibar/multibar.html',
+          controller: 'MultibarCtrl',
+          controllerAs: 'multibar'
+        },
+        '@': {
+          templateUrl: 'app/new_home/home.html',
+          controller: 'HomeCtrl',
+          controllerAs: 'home',
+        }
+      },
+      resolve: {
+        checkUser: ['$http', checkUser]
+      }
+    })
 
+    .state('home', {
+      url: '/home',
+      views: {
+        'multibar': {
+          templateUrl: 'app/multibar/multibar.html',
+          controller: 'MultibarCtrl',
+          controllerAs: 'multibar'
+        },
+        '@': {
+          templateUrl: 'app/home/home.html',
+          controller: 'HomeCtrl',
+          controllerAs: 'home',
+        }
+      },
+      resolve: {
+        checkUser: ['$http', checkUser]
+      }
+    })
+
+    .state('search', {
+      url: '/search',
+      views: {
+        'multibar': {
+          templateUrl: 'app/multibar/multibar.html',
+          controller: 'MultibarCtrl',
+          controllerAs: 'multibar'
+        },
+        '@': {
+          templateUrl: 'app/search/search.html',
+          controller: 'SearchCtrl',
+          controllerAs: 'vm',
+        }
+      },
+      resolve: {
+        checkUser: ['$http', checkUser]
+      }
+    })
+
+    .state('host', {
+      url: '/host',
+      views: {
+        '@': {
+          templateUrl: 'app/host/host.html',
+          controller: 'HostCtrl',
+          controllerAs: 'vm',
+        }
+      },
+      resolve: {
+        checkUser: ['$http', checkUser]
+      }
+    })
+
+    .state('user', {
+      url: '/user/:id',
+      views: {
+        'multibar': {
+          templateUrl: 'app/multibar/multibar.html',
+          controller: 'MultibarCtrl',
+          controllerAs: 'multibar'
+        },
+        '@': {
+          templateUrl: 'app/user/user.html',
+          controller: 'UserCtrl',
+          controllerAs: 'user',
+        }
+      },
+      resolve: {
+        checkUser: ['$http', checkUser],
+        userData: ['$http', '$stateParams', function($http, $stateParams) {
+          return $http({method: 'GET', url: '/user/' + $stateParams.id});
+        }]
+      }
+    })
+
+    // When linked to a particular meal, we render that meal
+    .state('meal', {
+      url: '/meals/:id',
+      views: {
+        'multibar': {
+          templateUrl: 'app/multibar/multibar.html',
+          controller: 'MultibarCtrl',
+          controllerAs: 'multibar'
+        },
+        '@': {
+          templateUrl: 'app/meal/meal.html',
+          controller: 'MealCtrl',
+          controllerAs: 'meal',
+        },
+      },
+      resolve: {
+        checkUser: ['$http', checkUser],
+        mealsData: ['$http', '$stateParams', function($http, $stateParams) {
+          return $http({method: 'GET', url: '/meals/' + $stateParams.id});
+        }]
+      }
+    })
+
+    .state('results', {
+      url: '/results',
+      views: {
+        'multibar': {
+          templateUrl: 'app/multibar/multibar.html',
+          controller: 'MultibarCtrl',
+          controllerAs: 'multibar'
+        },
+        '@': {
+          templateUrl: 'app/searchResults/searchResults.html',
+          controller: 'SearchResultsCtrl',
+          controllerAs: 'results',
+        }
+      },
+      resolve: {
+        checkUser: ['$http', checkUser],
+        mealsData: function($http) {
+          return $http({method: 'GET', url: '/meals'});
+        }
+      }
+    });
+  }
 })();

@@ -1,0 +1,187 @@
+* {
+    /*border: 1px solid red;*/
+}
+
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+    display: none !important;
+}
+
+#meal {
+    padding: 0;
+
+    font-family: "Noto Sans", sans-serif;
+}
+
+header {
+    height: 300px;
+
+    background: #ffffef;
+}
+
+row {
+    margin-top: 0em;
+    margin-bottom: 0.3em;
+}
+
+.single-attendee p {
+    text-align: center;
+}
+
+.main,
+.top,
+.other {
+    margin-top: 1em;
+    margin-right: 10%;
+    margin-bottom: 0;
+    margin-left: 10%;
+}
+
+.other {
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
+row column {
+    margin-top: 0.3em;
+    margin-right: 0.8em;
+    margin-bottom: 0.3em;
+    margin-left: 0.8em;
+}
+
+a {
+    text-decoration: none;
+}
+
+a h2 {
+    text-decoration: normal;
+}
+
+a p {
+    color: black;
+}
+
+h1,
+h2,
+h3,
+p {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0;
+}
+
+.title {
+    font-size: 2em;
+}
+
+h1 {
+    font-size: 1.6em;
+    font-weight: bold;
+
+    color: black;
+    background-color: #ffffef;
+}
+
+h2 {
+    font-size: 1.3em;
+    font-weight: normal;
+    font-weight: bold;
+
+    text-align: initial;
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 0.8em;
+}
+
+.profile-pic {
+    height: 20em;
+
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    /*background: url("https://pbs.twimg.com/profile_images/629229175564472320/6mbAf0qX_400x400.jpg") no-repeat center center scroll;*/
+}
+
+.button {
+    margin-top: -5em;
+}
+
+.attend-button {
+    width: 20em;
+    height: 3.5em;
+    margin-right: 3%;
+}
+
+#map {
+    position: relative;
+
+    height: 54em;
+}
+
+img.yelp {
+    width: 6em;
+    margin-bottom: -0.25em;
+}
+
+.desc {
+    padding-right: 1em;
+
+    text-align: left;
+}
+
+.attr {
+    font-weight: bold;
+}
+
+.title {
+    padding-bottom: 0;
+
+    text-align: left;
+}
+
+h2.ng-binding {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    text-align: center;
+}
+
+.host-info {
+    text-align: initial;
+}
+
+.attendee-picture {
+    height: 7em;
+
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+}
+
+.yelp-info,
+.attendees {
+    text-align: left;
+}
+
+.date {
+    padding-top: 1em;
+
+    text-align: center;
+}
+
+.titleInfo {
+    background-color: #ffffef;
+}
+
+@media (max-width: 987px) {
+    column.profile-pic {
+        height: 50em;
+    }
+}
