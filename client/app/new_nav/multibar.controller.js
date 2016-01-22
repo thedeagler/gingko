@@ -9,11 +9,11 @@
   function MultibarCtrl(multibarFactory, $state, $location, $window, $mdDialog, checkUser) {
 
     var self = this;
-
+    
     // If logged in, checkUser.data will have all information about Facebook
     // Friends, profile picture, etc.
-    self.user = checkUser.data;
-    self.isLoggedIn = self.user ? true : false;
+    var user = checkUser.data;
+    self.isLoggedIn = user ? true : false;
 
     self.searchQuery = '';
 
@@ -54,17 +54,6 @@
       }
       self.searchQuery = '';
     };
-
-    self.hostDialog = function (ev) {
-      $mdDialog.show({
-      // controller: DialogController,
-      templateUrl: 'app/host/host.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      // fullscreen: useFullScreen
-    })
-    }
   }
 })();
 

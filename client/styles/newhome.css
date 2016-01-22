@@ -1,0 +1,56 @@
+/*
+  Allow angular.js to be loaded in body, hiding cloaked elements until
+  templates compile.  The !important is important given that there may be
+  other selectors that are more specific or come later and might alter display.
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+#home_container {
+  width:100%;
+}
+
+/*
+==============================
+    Hero
+==============================
+ */
+
+#hero_container {
+  background-image: url('../resources/visual-identity-04.svg');
+  -webkit-background-size: repeat;
+  background-size: repeat;
+}
+
+.title {
+  color: black;
+  background: rgba(255, 255, 255, .75);
+  font-size: 3rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+/*
+==============================
+    Suggestion Cards
+==============================
+ */
+
+.cardfdsa {
+  position: absolute;
+  /*top: 50%*/
+  left: 50%;
+  /*transform: translate(-50%, -50%);*/
+  width: 200px;
+  height: 200px;
+
+  background-color: rgba(255, 255, 255, .75);
+
+}
+
+/*
+==============================
+    Card Footer
+==============================
+ */

@@ -18,11 +18,11 @@
     };
 
     // Set heights of elements
-    var rowHeight = (window.innerHeight - 64)/ 2;
-    document.getElementById('hero_container').style.height = rowHeight + "px";
-    Array.prototype.slice.call(document.getElementsByClassName('card')).forEach(function(el) {
-      el.style.height = rowHeight + "px";
-    });
+    // var rowHeight = (window.innerHeight - 64)/ 2;
+    // document.getElementById('hero_container').style.height = rowHeight + "px";
+    // Array.prototype.slice.call(document.getElementsByClassName('card')).forEach(function(el) {
+    //   el.style.height = rowHeight + "px";
+    // });
 
     self.init = function(e, v) {
       if(!$rootScope.geolocation) {

@@ -1,21 +1,5 @@
-<div id="multibar" layout="column">
-  <span id="logo">
-    table<strong>surfer</strong>
-  </span>
-  <div layout="column" layout-gt-xs="row">
-    <md-button>ABOUT</md-button>
-    <md-button>FIND A TABLE</md-button>
-    <md-button ng-click="multibar.hostDialog($event)">HOST A TABLE</md-button>
-    <span flex> </span>
-    <md-button ng-if="multibar.isLoggedIn">SURFS UP, STEPHEN!</md-button>
-    <md-button ng-if="!multibar.isLoggedIn">LOGIN</md-button>
-  </div>
-</div>
-
-<md-dialog></md-dialog>
-
-
-<!-- <div id="multibar" ng-cloak>
+<!-- Multibar -->
+<div id="multibar" ng-cloak>
   <md-toolbar>
     <div class="md-toolbar-tools">
       <md-button ui-sref="home">Table Surfer</md-button>
@@ -47,4 +31,3 @@
     </div>
   </md-toolbar>
 </div>
- -->

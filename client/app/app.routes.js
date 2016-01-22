@@ -73,6 +73,20 @@
       }
     })
 
+    .state('host', {
+      url: '/host',
+      views: {
+        '@': {
+          templateUrl: 'app/host/host.html',
+          controller: 'HostCtrl',
+          controllerAs: 'vm',
+        }
+      },
+      resolve: {
+        checkUser: ['$http', checkUser]
+      }
+    })
+
     .state('user', {
       url: '/user/:id',
       views: {
