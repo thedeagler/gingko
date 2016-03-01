@@ -57,13 +57,13 @@
 
     self.hostDialog = function (ev) {
       $mdDialog.show({
-      // controller: DialogController,
-      templateUrl: 'app/host/host.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      // fullscreen: useFullScreen
-    })
+        // controller: host,
+        templateUrl: 'app/host/host.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        // fullscreen: useFullScreen
+      })
     }
   }
 })();

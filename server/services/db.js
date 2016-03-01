@@ -25,7 +25,8 @@ if (process.env.DATABASE_URL) {
   // Host application locally
   db = new Sequelize("tablesurfer", "admin", "admin", {
     dialect: "postgres",
-    port: 5432
+    port: 5432,
+    logging: false,
   });
 }
 

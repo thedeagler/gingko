@@ -13,12 +13,17 @@
       return $http({method: 'GET', url: '/auth/checkuser'});
     };
 
-    $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('newhome');
 
     $stateProvider
     .state('new_home', {
       url: '/newhome',
       views: {
+        'host': {
+          templateUrl: 'app/host/host.html',
+          controller: 'HostCtrl',
+          controllerAs: 'host'
+        },
         'multibar': {
           templateUrl: 'app/multibar/multibar.html',
           controller: 'MultibarCtrl',
@@ -75,11 +80,21 @@
 
     .state('host', {
       url: '/host',
+      // onEnter: ['$mdDialog', function ($mdDialog) {
+      //   $mdDialog.show({
+      //     controller: host,
+      //     templateUrl: 'app/host/host.html',
+      //     parent: angular.element(document.body),
+      //     targetEvent: ev || null,
+      //     clickOutsideToClose:true,
+      //     // fullscreen: useFullScreen
+      //   })
+      // }],
       views: {
         '@': {
           templateUrl: 'app/host/host.html',
           controller: 'HostCtrl',
-          controllerAs: 'vm',
+          controllerAs: 'host',
         }
       },
       resolve: {
