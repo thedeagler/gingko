@@ -1,4 +1,4 @@
-var db = require('./../services/db');
+var db = require('../services/db');
 var utils = require('./formatHandler');
 
 /****************************************
@@ -185,7 +185,6 @@ exports.getUserById = function(id) {
       where: { id: id }
     })
     .then(function(user) {
-      console.log(user);
       return user;
     });
 };
